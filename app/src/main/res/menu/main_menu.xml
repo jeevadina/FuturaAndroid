@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:title="@string/qr_scanner"
+            android:id="@+id/qrScanner"/>
+        <item android:title="@string/help_app" />
+        <item
+            android:id="@+id/logOut"
+            android:title="@string/logout" />
+    </group>
+</menu>

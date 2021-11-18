@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>base_url</key>
+        <value>https://api.upmyranks.com</value>
+    </entry>
+
+    <entry>
+        <key>base_path</key>
+        <value>/app/api/v1/</value>
+    </entry>
+
+    <entry>
+        <key>app_play_store_url</key>
+        <value>https://play.google.com/store/apps/details?id=com.futuraeducation</value>
+    </entry>
+
+    <entry>
+        <key>app_update_title</key>
+        <value>Update Available!</value>
+    </entry>
+
+    <entry>
+        <key>app_update_message</key>
+        <value>New features available in this version, please update and use it.</value>
+    </entry>
+    <entry>
+        <key>in_app_update_enable</key>
+        <value>false</value>
+    </entry>
+</defaultsMap>

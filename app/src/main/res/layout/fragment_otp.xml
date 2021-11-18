@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".onBoarding.fragment.OTPFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/enterVerification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:text="@string/enter_verification_code"
+                android:textAlignment="center"
+                android:textColor="@color/charcoal"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/otp_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/the_otp_has_been_sent_to_your_mobile_number_and_email_address"
+                android:textAlignment="center"
+                android:textColor="@color/charcoal"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enterVerification" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/otp_one"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="@dimen/_6sdp"
+                app:cardElevation="2dp"
+                app:layout_constraintEnd_toStartOf="@+id/otp_two"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otp_label">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/otp1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/alice_blue"
+                    android:cursorVisible="false"
+                    android:gravity="center"
+                    android:hint="@string/otp_hint"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/charcoal"
+                    android:textColorHint="@color/platinum"
+                    android:textSize="18sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/otp_two"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="@dimen/_6sdp"
+                app:cardElevation="2dp"
+                app:layout_constraintBottom_toBottomOf="@+id/otp_one"
+                app:layout_constraintEnd_toStartOf="@+id/otp_three"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/otp_one"
+                app:layout_constraintTop_toTopOf="@+id/otp_one">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/otp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/alice_blue"
+                    android:cursorVisible="false"
+                    android:gravity="center"
+                    android:hint="@string/otp_hint"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/charcoal"
+                    android:textColorHint="@color/platinum"
+                    android:textSize="18sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/otp_three"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_margin="5dp"
+                android:maxLength="1"
+                app:cardCornerRadius="@dimen/_6sdp"
+                app:cardElevation="2dp"
+                app:layout_constraintBottom_toBottomOf="@+id/otp_two"
+                app:layout_constraintEnd_toStartOf="@+id/otp_four"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/otp_two"
+                app:layout_constraintTop_toTopOf="@+id/otp_two">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/otp3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/alice_blue"
+                    android:cursorVisible="false"
+                    android:gravity="center"
+                    android:hint="@string/otp_hint"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/charcoal"
+                    android:textColorHint="@color/platinum"
+                    android:textSize="18sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/otp_four"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="@dimen/_6sdp"
+                app:cardElevation="2dp"
+                app:layout_constraintBottom_toBottomOf="@+id/otp_three"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/otp_three"
+                app:layout_constraintTop_toTopOf="@+id/otp_three">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/otp4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/alice_blue"
+                    android:cursorVisible="false"
+                    android:gravity="center"
+                    android:hint="@string/otp_hint"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/charcoal"
+                    android:textColorHint="@color/platinum"
+                    android:textSize="18sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/resend_otp_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:text="@string/didn_t_get_the_otp"
+                android:textAlignment="center"
+                android:textColor="@color/charcoal"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otp_one" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/resend_otp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="@string/resend"
+                android:textAlignment="textStart"
+                android:textColor="@color/carolina_blue"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/resend_otp_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/resend_otp_label"
+                app:layout_constraintTop_toTopOf="@+id/resend_otp_label" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:text="01:00"
+                android:textAlignment="center"
+                android:textColor="@color/charcoal"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/resend_otp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continueButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_margin="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:backgroundTint="@color/carolina_blue"
+                android:fontFamily="@font/news_gothic_bold"
+                android:text="@string/continue_label"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:cornerRadius="@dimen/_6sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timer" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/continueButton" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EB6E20</color>
+    <color name="colorPrimaryDark">#E25122</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_300">#D88043CC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="transparentmin">#72404040</color>
+    <color name="tab_select_color">#6ec1e4</color>
+    <color name="tab_default_color">#6c6c6c</color>
+    <color name="toolbar_text">#6ec1e4</color>
+    <color name="window_background">#FFFFFFFF</color>
+    <color name="divider_color">#aac2c2c2</color>
+    <color name="drawer_background">#ffffff</color>
+    <color name="yellow">#E8D30C</color>
+    <color name="orange">#FF9800</color>
+    <color name="bluishgreen">#CE14EF97</color>
+    <color name="blue">#CE3F86DC</color>
+    <color name="notification_badge">#FFEB3B</color>
+    <color name="fab_color">#AAAAAA</color>
+
+    <color name="text_color">#464C51</color>
+    <color name="triangle_color">#FFFFFFFF</color>
+    <color name="arrow_color">#000000</color>
+    <color name="border_color">#EEF4FA</color>
+
+    <color name="carolina_blue">#1D97DB</color>
+    <color name="ink_blue">#DD392AC5</color>
+    <color name="platinum">#E5E5E5</color>
+    <color name="charcoal">#464C51</color>
+    <color name="bio_pink">#C4D5396E</color>
+    <color name="redtext">#C3FF0000</color>
+    <color name="greytext">#AFAFAF</color>
+
+    <color name="blue_violet_crayola">#7766AE</color>
+    <color name="cyber_grape">#5D4D91</color>
+    <color name="caribbean_green">#1FCBAB</color>
+    <color name="safety_yellow">#EBD00A</color>
+    <color name="light_coral">#F88383</color>
+
+    <color name="emerald">#00C27A</color>
+    <color name="cardpurpletrans">#19181818</color>
+    <color name="bittersweet">#F97363</color>
+    <color name="mikado_yellow">#FFC300</color>
+    <color name="light_goldenrod_yellow">#FBF9D3</color>
+    <color name="pale_pink">#FBD3D3</color>
+
+    <color name="tea_green">#D5FBD3</color>
+    <color name="alice_blue">#EEF4FA</color>
+    <color name="background_black">#0D000000</color>
+    <color name="card12">#AAFF47</color>
+
+
+    <color name="card1">#C8FF88</color>
+    <color name="card2">#FFF4A7</color>
+    <color name="card3">#FFA4EB</color>
+    <color name="card4">#BFE8FF</color>
+    <color name="card5">#FFC1BA</color>
+    <color name="card6">#DEC3FF</color>
+    <color name="card7">#D5FBD3</color>
+    <color name="card8">#CCBDFF</color>
+    <color name="card9">#CBFA9FBD</color>
+    <color name="card10">#FFDFAF</color>
+    <color name="card11">#B0FFF7</color>
+
+    <color name="new_blue_dark">#6ec1e4</color>
+    <color name="new_blue_light">#f0f9fc</color>
+    <color name="umr_purple">#550D61</color>
+    <color name="umr_bg">#D8FDF9FF</color>
+
+
+</resources>

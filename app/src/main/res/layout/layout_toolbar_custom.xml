@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/umr_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_6sdp">
+
+   <!-- <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:src="@drawable/profile_placeholder"
+        android:scaleType="fitXY"
+        android:layout_centerVertical="true"
+        android:id="@+id/logoTool"/>-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/logoTool"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="250dp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:cardElevation="@dimen/_2sdp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:id="@+id/image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile_placeholder" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/logoTool"
+        android:text="Hi Tina,"
+        android:textColor="@color/greytext"
+        android:fontFamily="@font/roboto_bold"
+        android:id="@+id/userNameTool"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userNameTool"
+        android:layout_toEndOf="@id/logoTool"
+        android:layout_toStartOf="@id/qrScannerTool"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/roboto_bold"
+        android:id="@+id/batchSpinner"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_centerVertical="true"
+        android:tint="@color/umr_purple"
+        android:src="@drawable/ic_qr_code_scanner"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/qrScannerTool"/>
+
+</RelativeLayout>

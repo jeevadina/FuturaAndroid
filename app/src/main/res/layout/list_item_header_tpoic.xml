@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/topicParent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_10sdp"
+    android:weightSum="10">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:text="@string/app_name"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="@dimen/_12sdp"
+        android:layout_weight="9"
+        android:textColor="@color/black"
+        android:id="@+id/txt_topic_header"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_gravity="center"
+        android:layout_weight="2"
+        android:rotation="90"
+        app:srcCompat="@drawable/ic_blue_arrow"
+        android:id="@+id/img_topic_header"
+        android:layout_marginEnd="@dimen/_10sdp"/>
+
+</LinearLayout>

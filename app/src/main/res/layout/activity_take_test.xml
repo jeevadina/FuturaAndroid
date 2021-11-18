@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.futuraeducation.helper.SimpleStatefulLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/stateful"
+    android:layout_height="match_parent"
+    tools:context=".activity.TakeTestActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbarLayout"
+            layout="@layout/layout_toolbar" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.85"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_12sdp"
+                        android:text="Today Test - 19th Mar, 12:04PM"
+                        android:textColor="@color/carolina_blue"
+                        android:textSize="@dimen/_16sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/headinginstr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_12sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Instruction"
+                        android:textSize="@dimen/_16sdp"
+                        app:layout_constraintTop_toBottomOf="@id/heading" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/iconconstr"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@id/headinginstr">
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/noOfDoubtsProgress"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:src="@drawable/duration"
+                            app:layout_constraintEnd_toStartOf="@+id/doubtsClarifiedProgress"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/durationtxt"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="wrap_content"
+                            android:text="Duration"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:textSize="@dimen/_10sdp"
+                            app:layout_constraintEnd_toStartOf="@+id/doubtsClarifiedProgress"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/noOfDoubtsProgress"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/durationValue"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="wrap_content"
+                            android:text="1hr, 7mins"
+                            android:textAlignment="center"
+                            android:textColor="@color/carolina_blue"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            app:layout_constraintEnd_toStartOf="@+id/doubtsClarifiedProgress"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/durationtxt"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/doubtsClarifiedProgress"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:src="@drawable/questionanswer"
+                            app:layout_constraintEnd_toStartOf="@+id/doubtsPendingProgress"
+                            app:layout_constraintStart_toEndOf="@+id/noOfDoubtsProgress"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/questiontxt"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="wrap_content"
+                            android:text="Questions"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:textSize="@dimen/_10sdp"
+                            app:layout_constraintEnd_toStartOf="@+id/doubtsPendingProgress"
+                            app:layout_constraintStart_toEndOf="@+id/noOfDoubtsProgress"
+                            app:layout_constraintTop_toBottomOf="@id/noOfDoubtsProgress"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/questionValue"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="wrap_content"
+                            android:text="15"
+                            android:textAlignment="center"
+                            android:textColor="@color/carolina_blue"
+                            android:textSize="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toStartOf="@+id/doubtsPendingProgress"
+                            app:layout_constraintStart_toEndOf="@+id/noOfDoubtsProgress"
+                            app:layout_constraintTop_toBottomOf="@id/questiontxt"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/doubtsPendingProgress"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:src="@drawable/attempt"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/doubtsClarifiedProgress"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/attempttxt"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="wrap_content"
+                            android:text="Attempt"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:textSize="@dimen/_10sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/doubtsClarifiedProgress"
+                            app:layout_constraintTop_toBottomOf="@id/doubtsPendingProgress"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/attemptedValue"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:textAlignment="center"
+                            android:textColor="@color/carolina_blue"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/doubtsClarifiedProgress"
+                            app:layout_constraintTop_toBottomOf="@id/attempttxt"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/headertitletxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_12sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Notes"
+                        android:textSize="@dimen/_13sdp"
+                        app:layout_constraintTop_toBottomOf="@id/iconconstr" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/statement1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="1. The Market scheme is displayed on top of each question."
+                        android:textColor="@color/greytext"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@id/headertitletxt" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/statement2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="2. To select an answer, click on the option."
+                        android:textColor="@color/greytext"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@id/statement1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/statement3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="3. To deselect an answer, click on the option again."
+                        android:textColor="@color/greytext"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@id/statement2" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/statement4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="4. You can change the answer by clicking some other options."
+                        android:textColor="@color/greytext"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@id/statement3" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/statement5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="5. You can mark a question for review if you want to revisit the question during the exam."
+                        android:textColor="@color/greytext"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@id/statement4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/statement6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="6. You can click 'Next' or 'previous' to go through the question sequentially."
+                        android:textColor="@color/greytext"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@id/statement5" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/statement7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="7. A Number list of all questions appears at the bottom of your screen, 'Under jump to question'. you can select the questions in any order within a section or any sections by clicking on the question number given on the list."
+                        android:textColor="@color/greytext"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@id/statement6" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/statement8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="8. Attempted questions will be marked blue, 'Marked for review' question will be marked with Yellow."
+                        android:textColor="@color/greytext"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@id/statement7" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/border_color"
+                        app:layout_constraintTop_toBottomOf="@id/statement8" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/takeTest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/carolina_blue"
+                            android:fontFamily="@font/roboto_bold"
+                            android:paddingLeft="@dimen/_12sdp"
+                            android:paddingTop="@dimen/_8sdp"
+                            android:paddingRight="@dimen/_12sdp"
+                            android:paddingBottom="@dimen/_8sdp"
+                            android:text="Take Test"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.futuraeducation.helper.SimpleStatefulLayout>

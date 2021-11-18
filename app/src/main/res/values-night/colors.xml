@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="tab_select_color">#6ec1e4</color>
+    <color name="tab_default_color">#aac2c2c2</color>
+    <color name="toolbar_text">#6ec1e4</color>
+    <color name="window_background">#FF000000</color>
+    <color name="divider_color">#aac2c2c2</color>
+    <color name="drawer_background">#1d1f21</color>
+    <color name="fab_color">#AAAAAA</color>
+    <color name="charcoal">#464C51</color>
+    <color name="new_blue_dark">#6ec1e4</color>
+    <color name="new_blue_light">#f0f9fc</color>
+    <color name="text_color">#FFFFFF</color>
+    <color name="triangle_color">#414141</color>
+    <color name="arrow_color">#FFFFFF</color>
+    <color name="border_color">#414141</color>
+
+</resources>

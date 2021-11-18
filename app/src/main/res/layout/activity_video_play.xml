@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.futuraeducation.helper.SimpleStatefulLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/statefulLayout"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical">
+
+        <com.google.android.exoplayer2.ui.StyledPlayerView
+            android:id="@+id/playerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:resize_mode="fill"
+            app:use_controller="true"
+            app:show_shuffle_button="true"
+            app:show_subtitle_button="true" >
+
+        <!--    <ImageButton
+                android:id="@+id/exo_fullscreen_button"
+                style="@style/ExoMediaButton"
+                android:src="@drawable/exo_controls_fullscreen_enter"/>
+-->
+            <ImageView
+                android:layout_gravity="bottom"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:maxWidth="@dimen/_40sdp"
+                android:maxHeight="@dimen/_60sdp"
+                android:src="@drawable/upmyranks_logo" />
+        </com.google.android.exoplayer2.ui.StyledPlayerView>
+
+        <LinearLayout
+            android:id="@+id/btnDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:tint="@color/white"
+                android:src="@drawable/baseline_download_for_offline_24"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:gravity="right|center"
+                android:visibility="visible"
+                android:paddingRight="@dimen/_16sdp"
+                android:textColor="@color/white"
+                android:background="#cc000000"
+                android:text="Watch Later" />
+        </LinearLayout>
+    </RelativeLayout>
+    <!--    <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/playerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:use_controller="true" />-->
+</com.futuraeducation.helper.SimpleStatefulLayout>

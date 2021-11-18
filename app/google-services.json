@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "881753448463",
+    "project_id": "futuraportal",
+    "storage_bucket": "futuraportal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881753448463:android:8218819f3baa950febc37a",
+        "android_client_info": {
+          "package_name": "com.futuraeducation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881753448463-bvdfk50o1s88honuse0o4o5l0mbn3lu8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMhubhvLMQHp0Wwd5eZWZenfY5hxG-Zto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881753448463-bvdfk50o1s88honuse0o4o5l0mbn3lu8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

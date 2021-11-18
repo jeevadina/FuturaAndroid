@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/subTopicTitleCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/videoName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:drawableStart="@drawable/ic_play_red"
+        android:drawablePadding="@dimen/_5sdp"
+        android:maxLines="2"
+        android:text="Important identities in trigonometry and it's applications"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/noContTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="No Contents"
+        android:textColor="@color/greytext"
+        android:visibility="visible" />
+
+    <View
+        android:id="@+id/viewDividerLearn"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="@dimen/_3sdp"
+        android:layout_marginEnd="@dimen/_3sdp"
+        android:background="@drawable/ic_line_view" />
+
+</LinearLayout>

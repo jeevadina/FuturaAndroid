@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_menu_spinner"
+        android:title="ActionBar Spinner"
+        app:actionViewClass="android.widget.Spinner"
+        app:iconTint="@color/toolbar_text"
+        app:showAsAction="always"
+        android:importantForAccessibility="yes"
+        />
+
+    <item
+        android:id="@+id/action_qr_code"
+        android:title="@string/qr_scanner"
+        android:icon="@drawable/ic_qr_code_scanner"
+        app:iconTint="@color/toolbar_text"
+        android:importantForAccessibility="yes"
+        app:showAsAction="always"/>
+
+   <!-- <item
+        android:id="@+id/action_menu_notification"
+        android:title=""
+        android:icon="@drawable/ic_new_notify"
+        android:importantForAccessibility="yes"
+        app:iconTint="@color/toolbar_text"
+        app:actionLayout="@layout/layout_notification_icon"
+        app:showAsAction="always"/>-->
+
+</menu>

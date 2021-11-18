@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/toolbar_chapter"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/logoTool"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="250dp"
+        app:cardElevation="@dimen/_2sdp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8sdp"
+            android:tint="@color/black"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_back"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <Chronometer
+        android:id="@+id/durationValue"
+        android:layout_width="wrap_content"
+        android:textColor="@color/greytext"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/_2sdp"
+        android:textStyle="bold"
+        android:paddingEnd="@dimen/_14sdp"
+        android:layout_alignParentEnd="true"
+        android:countDown="true"
+        android:fontFamily="@font/news_gothic_bold"
+        android:textSize="@dimen/_16sdp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingBottom="@dimen/_7sdp"
+    android:orientation="horizontal">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextAppearance.AppCompat.Title"
+        android:id="@+id/txtCount"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:elevation="@dimen/_3sdp"
+        android:gravity="center"
+        android:textSize="@dimen/_18sdp"
+        android:textColor="@color/new_blue_dark"
+        android:text="1"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@drawable/bg_circle"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextAppearance.AppCompat.Small"
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_weight="1"
+        android:text="name"
+        android:textColor="@color/new_blue_dark"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="normal"
+    />
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextAppearance.AppCompat.Small"
+        android:id="@+id/txtAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="29/30"
+        android:textColor="@color/greytext"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="normal"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>
+

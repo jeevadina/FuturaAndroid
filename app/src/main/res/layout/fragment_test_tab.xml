@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <!--      <androidx.appcompat.widget.AppCompatTextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Take Test"
+                  android:fontFamily="@font/roboto_bold"
+                  style="@style/TextAppearance.AppCompat.Headline"
+                  android:padding="@dimen/_5sdp"
+                  android:layout_marginStart="@dimen/_8sdp"/>
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                  android:orientation="horizontal"
+                  android:id="@+id/recyclerTest"
+                  tools:listitem="@layout/test_item_view"/>
+
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Take Report &amp; Request"
+                  android:fontFamily="@font/roboto_bold"
+                  style="@style/TextAppearance.AppCompat.Headline"
+                  android:padding="@dimen/_5sdp"
+                  android:layout_marginStart="@dimen/_8sdp"/>
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                  android:orientation="horizontal"
+                  android:id="@+id/recyclerTestReport"
+                  tools:listitem="@layout/test_item_view"/>
+      -->
+        <com.skydoves.expandablelayout.ExpandableLayout
+            android:id="@+id/expandableScheduleTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:expandable_duration="300"
+            app:expandable_isExpanded="false"
+            app:expandable_parentLayout="@layout/test_layout_parent"
+            app:expandable_secondLayout="@layout/test_layout_child"
+            app:expandable_showSpinner="true"
+            app:expandable_spinner="@drawable/ic_arrow_down"
+            app:expandable_spinner_animate="true"
+            app:expandable_spinner_color="@color/umr_purple"
+            app:expandable_spinner_gravity="end"
+            app:expandable_spinner_margin="4dp"
+            app:expandable_spinner_size="40dp"/>
+
+        <com.skydoves.expandablelayout.ExpandableLayout
+            android:id="@+id/expandableAttemptedTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:expandable_duration="300"
+            app:expandable_isExpanded="false"
+            app:expandable_parentLayout="@layout/test_layout_parent"
+            app:expandable_secondLayout="@layout/test_layout_child"
+            app:expandable_showSpinner="true"
+            app:expandable_spinner="@drawable/ic_arrow_down"
+            app:expandable_spinner_animate="true"
+            app:expandable_spinner_color="@color/umr_purple"
+            app:expandable_spinner_gravity="end"
+            app:expandable_spinner_margin="4dp"
+            app:expandable_spinner_size="42dp" />
+
+        <com.skydoves.expandablelayout.ExpandableLayout
+            android:id="@+id/expandableUnAttemptedTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:expandable_duration="300"
+            app:expandable_isExpanded="false"
+            app:expandable_parentLayout="@layout/test_layout_parent"
+            app:expandable_secondLayout="@layout/test_layout_child"
+            app:expandable_showSpinner="true"
+            app:expandable_spinner="@drawable/ic_arrow_down"
+            app:expandable_spinner_animate="true"
+            app:expandable_spinner_color="@color/umr_purple"
+            app:expandable_spinner_gravity="end"
+            app:expandable_spinner_margin="4dp"
+            app:expandable_spinner_size="42dp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

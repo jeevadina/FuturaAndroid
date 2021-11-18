@@ -1,0 +1,177 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.20'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+
+    defaultConfig {
+        applicationId "com.futuraeducation"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 20
+        versionName "1.28"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+    lintOptions {
+        // The demo app isn't indexed, doesn't have translations, and has a
+        // banner for AndroidTV that's only in xhdpi density.
+        disable 'GoogleAppIndexingWarning','MissingTranslation','IconDensities'
+    }
+
+//    flavorDimensions "decoderExtensions"
+
+   /* productFlavors {
+        noDecoderExtensions {
+            dimension "decoderExtensions"
+            buildConfigField "boolean", "USE_DECODER_EXTENSIONS", "false"
+        }
+        withDecoderExtensions {
+            dimension "decoderExtensions"
+            buildConfigField "boolean", "USE_DECODER_EXTENSIONS", "true"
+        }
+    }*/
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'org.chromium.net:cronet-api:76.3809.111'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //networking library
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    //Android Multidex
+    implementation 'androidx.multidex:multidex:2.0.1'
+    //Glide image library
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+    kapt 'androidx.annotation:annotation:1.2.0'
+    //pretty time
+    implementation 'org.ocpsoft.prettytime:prettytime:5.0.1.Final'
+    //scalable size
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    //Room database
+    def room_version = "2.3.0"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$room_version")
+
+    //GSON
+    implementation 'com.google.code.gson:gson:2.8.7'
+    //State full layout
+    implementation 'cz.kinst.jakub:android-stateful-layout-base:2.0.7'
+    //MP Android chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
+    // Add the dependency for the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    // Declare the dependencies for the Crashlytics and Analytics libraries
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    // Declare the dependencies for the Remote Config and Analytics libraries
+    implementation 'com.google.firebase:firebase-config-ktx'
+    //volley
+    implementation("com.android.volley:volley:1.2.0")
+    //percentage bar
+    implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+    //PDF viewer
+    implementation 'com.github.afreakyelf:Pdf-Viewer:1.0.7'
+    //Video player
+//    implementation 'com.github.HamidrezaAmz:MagicalExoPlayer:2.0.7'
+    //Image Zoom
+    implementation 'com.jsibbold:zoomage:1.3.1'
+
+    // Declare the dependency for the Firebase Authentication library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    // Also declare the dependency for the Google Play services library and specify its version
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
+
+    implementation 'androidx.browser:browser:1.3.0'
+    //serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+//    implementation 'it.sysdata.mobile:htmlspanner:1.0.2'
+//    implementation 'net.sourceforge.htmlcleaner:htmlcleaner:2.16'
+    //flexbox layout manager
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+    implementation 'org.sufficientlysecure:html-textview:4.0'
+
+    implementation 'io.github.kexanie.library:MathView:0.0.6'
+
+    implementation 'com.github.jstarczewski:MathView:0.4.0'
+
+    //vimeo video url
+    implementation 'com.github.ed-george:AndroidVimeoExtractor:1.2.1'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.15.1'
+
+    //QR Scanner
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
+
+    //retrofit for api call
+    implementation('com.squareup.retrofit2:retrofit:2.6.0') {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    }
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.google.code.gson:gson:2.7'
+    compileOnly 'org.checkerframework:checker-qual:' + checkerframeworkVersion
+    implementation("com.google.android.exoplayer:extension-cronet:2.15.0")
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.29.0'
+
+    implementation "com.github.skydoves:expandablelayout:1.0.7"
+
+    //EventBus
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+    //Coroutine library
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    implementation 'com.google.android.play:core:1.10.2'
+
+    //circle progress chart
+    implementation("ir.mahozad.android:pie-chart:0.7.0")
+
+}

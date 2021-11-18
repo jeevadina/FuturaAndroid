@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".practiceTest.SelectedTopicActivity">
+
+    <include
+        android:id="@+id/toolbarLayout"
+        layout="@layout/layout_toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbarLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/selectedTopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:text="@string/selected_topics"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/pickTopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:text="@string/based_on_the_selected_topics_we_ll_automatically_select_the_nquestions_you_re_weak_in"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@+id/selectedTopic" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pickTopic">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/practiceTopicRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:orientation="vertical"
+                        android:overScrollMode="never"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/row_practice_topic_list" />
+
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginVertical="@dimen/_4sdp"
+                        android:background="@color/alice_blue"
+                        app:layout_constraintTop_toBottomOf="@id/practiceTopicRecycler" />
+
+                    <View
+                        android:id="@+id/viewQuestion"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/rounded_circle_filled"
+                        android:elevation="@dimen/_4sdp"
+                        app:layout_constraintEnd_toStartOf="@+id/viewDuration"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider"
+                        app:layout_constraintWidth_percent="0.44" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/questions"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_4sdp"
+                        android:elevation="@dimen/_10sdp"
+                        android:paddingHorizontal="@dimen/_2sdp"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/charcoal"
+                        android:textSize="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/viewQuestion"
+                        app:layout_constraintEnd_toStartOf="@id/questionArrow"
+                        app:layout_constraintStart_toStartOf="@id/viewQuestion"
+                        app:layout_constraintTop_toTopOf="@id/viewQuestion" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/questionArrow"
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:background="@drawable/ic_down_arrow"
+                        android:backgroundTint="@color/charcoal"
+                        android:elevation="@dimen/_5sdp"
+                        android:padding="@dimen/_5sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/viewQuestion"
+                        app:layout_constraintEnd_toEndOf="@id/viewQuestion"
+                        app:layout_constraintTop_toTopOf="@id/viewQuestion" />
+
+                    <View
+                        android:id="@+id/viewDuration"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/rounded_circle_filled"
+                        android:elevation="@dimen/_4sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/viewQuestion"
+                        app:layout_constraintTop_toBottomOf="@id/divider"
+                        app:layout_constraintWidth_percent="0.44" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/duration"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_4sdp"
+                        android:elevation="@dimen/_10sdp"
+                        android:paddingHorizontal="@dimen/_2sdp"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/charcoal"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/viewDuration"
+                        app:layout_constraintEnd_toStartOf="@id/durationArrow"
+                        app:layout_constraintStart_toStartOf="@id/viewDuration"
+                        app:layout_constraintTop_toTopOf="@id/viewDuration" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/durationArrow"
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:background="@drawable/ic_down_arrow"
+                        android:backgroundTint="@color/charcoal"
+                        android:elevation="@dimen/_5sdp"
+                        android:padding="@dimen/_5sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/viewDuration"
+                        app:layout_constraintEnd_toEndOf="@id/viewDuration"
+                        app:layout_constraintTop_toTopOf="@id/viewDuration" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/back"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_15sdp"
+                        android:backgroundTint="@color/alice_blue"
+                        android:text="@string/back"
+                        android:textAllCaps="false"
+                        android:textColor="@color/charcoal"
+                        android:textSize="@dimen/_10sdp"
+                        app:cornerRadius="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/next"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/viewQuestion" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/next"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_15sdp"
+                        android:backgroundTint="@color/carolina_blue"
+                        android:text="@string/next"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/_10sdp"
+                        app:cornerRadius="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/back"
+                        app:layout_constraintTop_toBottomOf="@+id/viewQuestion" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

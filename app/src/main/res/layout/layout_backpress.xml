@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/toolbar_chapter"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/logoTool"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="250dp"
+        app:cardElevation="@dimen/_2sdp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8sdp"
+        android:tint="@color/black"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_back"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/nxtChapter"
+        android:layout_centerVertical="true"
+        android:background="@drawable/bg_card_tab"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_3sdp"
+        android:visibility="gone"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:drawablePadding="@dimen/_3sdp"
+        android:textColor="@color/umr_purple"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:drawableEndCompat="@drawable/ic_side_arrow"
+        android:text="Next Chapter"/>
+
+</RelativeLayout>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".practiceTest.StartPracticeActivity">
+
+    <include
+        android:id="@+id/toolbarLayout"
+        layout="@layout/layout_toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/practiceTest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_12sdp"
+                android:text="Practice Test - 19th Mar, 12:04PM"
+                android:textColor="@color/carolina_blue"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_12sdp"
+                android:text="@string/instructions"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/practiceTest" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/durationIcon"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_16sdp"
+                android:src="@drawable/duration"
+                app:layout_constraintEnd_toStartOf="@id/questionsIcon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instructions" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_4sdp"
+                android:text="@string/duration"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="@id/durationIcon"
+                app:layout_constraintStart_toStartOf="@id/durationIcon"
+                app:layout_constraintTop_toBottomOf="@+id/durationIcon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/durationValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:text="1hr,7mins"
+                android:textColor="@color/carolina_blue"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/durationIcon"
+                app:layout_constraintStart_toStartOf="@id/durationIcon"
+                app:layout_constraintTop_toBottomOf="@+id/duration" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/questionsIcon"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_16sdp"
+                android:src="@drawable/question_answer"
+                app:layout_constraintEnd_toStartOf="@id/attemptIcon"
+                app:layout_constraintStart_toEndOf="@+id/durationIcon"
+                app:layout_constraintTop_toBottomOf="@+id/instructions" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/questionAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_4sdp"
+                android:text="@string/questions"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="@id/questionsIcon"
+                app:layout_constraintStart_toStartOf="@id/questionsIcon"
+                app:layout_constraintTop_toBottomOf="@+id/questionsIcon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:text="15"
+                android:textColor="@color/carolina_blue"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/questionsIcon"
+                app:layout_constraintStart_toStartOf="@id/questionsIcon"
+                app:layout_constraintTop_toBottomOf="@+id/questionAnswer" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/attemptIcon"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_16sdp"
+                android:src="@drawable/attempt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/questionsIcon"
+                app:layout_constraintTop_toBottomOf="@+id/instructions" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/attempt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_4sdp"
+                android:text="@string/attempt"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="@id/attemptIcon"
+                app:layout_constraintStart_toStartOf="@id/attemptIcon"
+                app:layout_constraintTop_toBottomOf="@+id/attemptIcon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:text="1"
+                android:textColor="@color/carolina_blue"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/attemptIcon"
+                app:layout_constraintStart_toStartOf="@id/attemptIcon"
+                app:layout_constraintTop_toBottomOf="@+id/attempt" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/thisExam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_12sdp"
+                android:text="This Exam contains 1 Section"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/durationValue" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/sectionValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_12sdp"
+                android:drawableStart="@drawable/ic_side_arrow"
+                android:drawablePadding="@dimen/_8sdp"
+                android:drawableTint="@color/safety_yellow"
+                android:gravity="center_vertical"
+                android:text="Section 1"
+                android:textColor="@color/carolina_blue"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/thisExam" />
+
+            <View
+                android:id="@+id/verticalDivider"
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:background="@color/alice_blue"
+                app:layout_constraintBottom_toBottomOf="@+id/sectionValue"
+                app:layout_constraintStart_toEndOf="@+id/sectionValue"
+                app:layout_constraintTop_toTopOf="@+id/sectionValue" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_12sdp"
+                android:gravity="center_vertical"
+                android:text="15 Questions"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toEndOf="@+id/verticalDivider"
+                app:layout_constraintTop_toBottomOf="@+id/thisExam" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginVertical="@dimen/_12sdp"
+                android:background="@color/alice_blue"
+                app:layout_constraintTop_toBottomOf="@+id/sectionValue" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/startPracticeTest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_15sdp"
+                android:backgroundTint="@color/carolina_blue"
+                android:padding="@dimen/_4sdp"
+                android:text="@string/start_practice_test"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/saveForLater"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                app:layout_constraintWidth_percent="0.43" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveForLater"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_15sdp"
+                android:backgroundTint="@color/carolina_blue"
+                android:padding="@dimen/_4sdp"
+                android:text="@string/save_for_later"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10sdp"
+                app:cornerRadius="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/startPracticeTest"
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                app:layout_constraintWidth_percent="0.43" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

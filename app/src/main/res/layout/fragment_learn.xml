@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.futuraeducation.helper.SimpleStatefulLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/stateful"
+    android:background="@color/umr_bg"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/top_corner_bg">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_5sdp"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_toolbar_custom" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:src="@drawable/ic_card_v1"/>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/previosVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/continue_where_you"
+                android:textSize="@dimen/_16sdp" />
+
+            <com.futuraeducation.helper.NestedScrollableHost
+                android:id="@+id/studyRecyclerParent1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/playedRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/row_played_video" />
+
+            </com.futuraeducation.helper.NestedScrollableHost>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/learnTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text="Learn By Subject"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="@dimen/_16sdp" />
+
+            <com.futuraeducation.helper.NestedScrollableHost
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/subjectsRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:spanCount="3"
+                    android:background="#3CECECEC"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:itemCount="6"
+                    tools:listitem="@layout/activity_subjects"/>
+
+            </com.futuraeducation.helper.NestedScrollableHost>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+
+</com.futuraeducation.helper.SimpleStatefulLayout>

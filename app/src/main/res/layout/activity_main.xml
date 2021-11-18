@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.futuraeducation.helper.SimpleStatefulLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/stateful"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            tools:context=".MainActivity">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/askDoubt"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="@dimen/_51sdp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_65sdp"
+                android:src="@drawable/doubt_ask"
+                android:visibility="gone" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/navigationView"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_card_tab"
+                android:elevation="2dp"
+                android:focusedByDefault="false"
+                android:outlineProvider="paddedBounds"
+                app:elevation="30dp"
+                app:itemIconTint="@drawable/selector_bottombar_item"
+                app:itemTextColor="@drawable/selector_bottombar_item"
+                app:labelVisibilityMode="labeled"
+                app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+                app:menu="@menu/navigation_home" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:alpha="0.72"
+            android:background="@android:color/black"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_main"
+            app:itemHorizontalPadding="@dimen/_40sdp"
+            app:itemTextAppearance="@font/roboto_regular"
+            app:itemTextColor="@android:color/white"
+            app:menu="@menu/main_menu" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</com.futuraeducation.helper.SimpleStatefulLayout>

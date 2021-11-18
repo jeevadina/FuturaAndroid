@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_corner_bg"
+            android:orientation="vertical"
+            >
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/_40sdp"
+            android:id="@+id/overallTxt"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingStart="@dimen/_7sdp"
+            android:text="Overall Performance"
+            android:textColor="@color/redtext" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/_4sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:id="@+id/outOfTxt"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:text="Your Overall Rank"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:id="@+id/outOfTxt1"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_below="@id/outOfTxt"
+                android:text="Out of 250 students"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:textSize="@dimen/_50sdp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/outOfTxt"
+                android:fontFamily="@font/roboto_bold"
+                android:text="2"
+                android:id="@+id/noteTxt"
+                android:layout_toLeftOf="@+id/imgScore"
+                android:textColor="@color/redtext" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/roboto_bold"
+                android:id="@+id/imgScore"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_cup"
+                android:layout_alignParentEnd="true"
+                />
+
+            <ProgressBar
+                android:id="@+id/progressView"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/new_blue_dark"
+                android:progressTint="@color/new_blue_dark"
+                android:progressTintMode="src_atop"
+                android:visibility="gone"
+                android:secondaryProgressTint="@color/new_blue_dark"
+                android:secondaryProgressTintMode="screen" />
+        </RelativeLayout>
+
+        <ir.mahozad.android.PieChart
+            android:id="@+id/pieChart"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginBottom="@dimen/_16sdp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <FrameLayout
+            android:id="@+id/fragment_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

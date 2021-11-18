@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/overallperfromance"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_weight="1"
+    app:cardCornerRadius="@dimen/_20sdp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_10sdp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgstud"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/students"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/your_overall"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imgstud"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ranktxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/rank"
+            android:textColor="@color/redtext"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/rank"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/rankHolder"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/rank"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/stud_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintVertical_bias="0.35"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/rankHolder"
+            app:layout_constraintEnd_toEndOf="@+id/rankHolder"
+            app:layout_constraintStart_toStartOf="@+id/rankHolder"
+            app:layout_constraintTop_toTopOf="@+id/rankHolder" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/outOfStud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rank"
+            android:layout_marginStart="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@+id/rank"
+            app:layout_constraintStart_toEndOf="@+id/imgstud"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/rank_out_of"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_below="@id/imgstud"
+            android:id="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@+id/imgstud"
+            app:layout_constraintStart_toStartOf="@+id/imgstud"
+            app:layout_constraintEnd_toStartOf="@+id/rankHolder"
+            android:layout_alignEnd="@id/ranktxt"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@color/divider_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crdavgscore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/yellow"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/yourAvgScoretxt"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:layout_marginRight="@dimen/_3sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:padding="@dimen/_5sdp"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/crdavgscore"
+                android:layout_alignEnd="@id/crdavgscore"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="@dimen/_5sdp"
+                android:gravity="center"
+                android:text="Your\nAverage score"
+                android:textAlignment="center"
+                android:textSize="@dimen/_8sdp"
+                android:textStyle="bold" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crdavgclassscore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:cardBackgroundColor="@color/purple_300"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/classAvgtxt"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:layout_marginRight="@dimen/_3sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:padding="@dimen/_5sdp"
+                    android:textAlignment="center"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/crdavgclassscore"
+                android:layout_alignStart="@id/crdavgclassscore"
+                android:layout_alignEnd="@id/crdavgclassscore"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="@dimen/_5sdp"
+                android:text="Class\nAverage score"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="@dimen/_8sdp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crdavgtopperscore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                app:cardBackgroundColor="@color/caribbean_green"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/topperAvgTxt"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:layout_marginRight="@dimen/_3sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:padding="@dimen/_5sdp"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/crdavgtopperscore"
+                android:layout_alignStart="@id/crdavgtopperscore"
+                android:layout_alignEnd="@id/crdavgtopperscore"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="@dimen/_5sdp"
+                android:text="Topper\nAverage score"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="@dimen/_8sdp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+

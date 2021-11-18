@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/numberBackground"
+    android:layout_width="@dimen/_25sdp"
+    android:layout_height="@dimen/_25sdp"
+    android:layout_margin="@dimen/_6sdp"
+    app:cardCornerRadius="@dimen/_12sdp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/questionNumber"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:gravity="center"
+        android:textColor="@color/charcoal"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
+
+</androidx.cardview.widget.CardView>

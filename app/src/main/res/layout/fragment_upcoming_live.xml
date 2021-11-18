@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.futuraeducation.helper.SimpleStatefulLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/stateful"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#34D2D2D2"
+    android:minHeight="@dimen/_450sdp">
+
+    <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.UpcomingLiveFragment">
+
+        <TextView
+            android:id="@+id/noCompletedSession"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/no_upcoming_session_found"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <com.futuraeducation.helper.NestedScrollableHost
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="3"
+                tools:listitem="@layout/row_upcoming" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/errorUpcomingCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:cardCornerRadius="@dimen/_8sdp"
+                    android:layout_margin="@dimen/_13sdp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_13sdp"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/errorTxt"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/umr_purple"
+                            android:text="@string/no_upcoming_session_found"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/retryUpcoming"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sfl_retry"
+                            android:textAllCaps="false"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="center"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/glass_bg"
+                            android:textColor="@color/white"
+                            />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </com.futuraeducation.helper.NestedScrollableHost>
+
+    </FrameLayout>
+</com.futuraeducation.helper.SimpleStatefulLayout>

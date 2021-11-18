@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".doubt.AskDoubtActivity">
+
+    <include
+        android:id="@+id/toolbarLayout"
+        layout="@layout/layout_toolbar"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:text="@string/ask_your_doubts"
+                    android:textAlignment="center"
+                    android:textColor="@color/carolina_blue"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:background="@color/alice_blue"
+                    app:layout_constraintTop_toBottomOf="@+id/heading" />
+
+                <View
+                    android:id="@+id/viewBoard"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_circle_filled"
+                    android:elevation="@dimen/_4sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/board"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_4sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:paddingHorizontal="@dimen/_2sdp"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/charcoal"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/viewBoard"
+                    app:layout_constraintEnd_toStartOf="@id/boardArrow"
+                    app:layout_constraintStart_toStartOf="@id/viewBoard"
+                    app:layout_constraintTop_toTopOf="@id/viewBoard" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/boardArrow"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/ic_down_arrow"
+                    android:backgroundTint="@color/charcoal"
+                    android:elevation="@dimen/_5sdp"
+                    android:padding="@dimen/_5sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/viewBoard"
+                    app:layout_constraintEnd_toEndOf="@id/viewBoard"
+                    app:layout_constraintTop_toTopOf="@id/viewBoard" />
+
+                <View
+                    android:id="@+id/viewTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_circle_filled"
+                    android:elevation="@dimen/_4sdp"
+                    app:layout_constraintTop_toBottomOf="@id/viewBoard" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/titleSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_4sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:paddingHorizontal="@dimen/_2sdp"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/viewTitle"
+                    app:layout_constraintEnd_toStartOf="@id/titleArrow"
+                    app:layout_constraintStart_toStartOf="@id/viewTitle"
+                    app:layout_constraintTop_toTopOf="@id/viewTitle" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/titleArrow"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/ic_down_arrow"
+                    android:backgroundTint="@color/charcoal"
+                    android:elevation="@dimen/_5sdp"
+                    android:padding="@dimen/_5sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/viewTitle"
+                    app:layout_constraintEnd_toEndOf="@id/viewTitle"
+                    app:layout_constraintTop_toTopOf="@id/viewTitle" />
+
+                <View
+                    android:id="@+id/viewSubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_circle_filled"
+                    android:elevation="@dimen/_4sdp"
+                    app:layout_constraintTop_toBottomOf="@id/viewTitle" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/subTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_4sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:paddingHorizontal="@dimen/_2sdp"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/viewSubTitle"
+                    app:layout_constraintEnd_toStartOf="@id/subtitleArrow"
+                    app:layout_constraintStart_toStartOf="@id/viewSubTitle"
+                    app:layout_constraintTop_toTopOf="@id/viewSubTitle" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/subtitleArrow"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/ic_down_arrow"
+                    android:backgroundTint="@color/charcoal"
+                    android:elevation="@dimen/_5sdp"
+                    android:padding="@dimen/_5sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/viewSubTitle"
+                    app:layout_constraintEnd_toEndOf="@id/viewSubTitle"
+                    app:layout_constraintTop_toTopOf="@id/viewSubTitle" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_160sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:textSize="@dimen/_12sdp"
+                    android:gravity="start"
+                    android:background="@drawable/rounded_circle_filled"
+                    android:hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+                    android:padding="@dimen/_8sdp"
+                    android:textColor="@color/charcoal"
+                    android:textColorHint="@color/charcoal"
+                    app:layout_constraintTop_toBottomOf="@+id/viewSubTitle" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addAttachment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:backgroundTint="@color/carolina_blue"
+                    android:text="@string/add_attachment"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    app:cornerRadius="@dimen/_12sdp"
+                    app:icon="@drawable/ic_attachment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/comments" />
+
+                <include
+                    android:id="@+id/fileRow"
+                    layout="@layout/row_file_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:layout_constraintBottom_toTopOf="@+id/divider1"
+                    app:layout_constraintTop_toBottomOf="@+id/addAttachment" />
+
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:background="@color/alice_blue"
+                    app:layout_constraintBottom_toTopOf="@+id/submit" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:backgroundTint="@color/carolina_blue"
+                    android:padding="@dimen/_16sdp"
+                    android:text="@string/submit"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    app:cornerRadius="@dimen/_12sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

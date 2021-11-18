@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.DoubtFragment">
+
+    <com.futuraeducation.helper.SimpleStatefulLayout
+        android:id="@+id/stateful"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/doubtsCard"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:layout_margin="@dimen/_15sdp"
+                app:cardCornerRadius="@dimen/_12sdp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:textColor="@color/mikado_yellow"
+                        android:textSize="@dimen/_25sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/noOfDoubtsProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/noOfDoubtsProgress"
+                        app:layout_constraintStart_toStartOf="@+id/noOfDoubtsProgress"
+                        app:layout_constraintTop_toTopOf="@+id/noOfDoubtsProgress" />
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/noOfDoubtsProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:max="100"
+                        android:progress="100"
+                        app:indicatorColor="@color/mikado_yellow"
+                        app:indicatorSize="@dimen/_60sdp"
+                        app:layout_constraintBottom_toTopOf="@+id/countLabel"
+                        app:layout_constraintEnd_toStartOf="@+id/doubtsClarifiedProgress"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        app:trackThickness="@dimen/_3sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/countLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="No. of Doubts \n Raised"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/noOfDoubtsProgress"
+                        app:layout_constraintStart_toStartOf="@+id/noOfDoubtsProgress"
+                        app:layout_constraintTop_toBottomOf="@+id/noOfDoubtsProgress" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="05"
+                        android:textColor="@color/emerald"
+                        android:textSize="@dimen/_25sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/doubtsClarifiedProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/doubtsClarifiedProgress"
+                        app:layout_constraintStart_toStartOf="@+id/doubtsClarifiedProgress"
+                        app:layout_constraintTop_toTopOf="@+id/doubtsClarifiedProgress" />
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/doubtsClarifiedProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:max="100"
+                        android:progress="50"
+                        android:rotation="180"
+                        app:indicatorColor="@color/emerald"
+                        app:indicatorSize="@dimen/_60sdp"
+                        app:layout_constraintBottom_toTopOf="@+id/clarifiedLabel"
+                        app:layout_constraintEnd_toStartOf="@+id/doubtsPendingProgress"
+                        app:layout_constraintStart_toEndOf="@+id/noOfDoubtsProgress"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        app:trackColor="@color/alice_blue"
+                        app:trackThickness="@dimen/_3sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/clarifiedLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Doubts\nClarified"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/doubtsClarifiedProgress"
+                        app:layout_constraintStart_toStartOf="@+id/doubtsClarifiedProgress"
+                        app:layout_constraintTop_toBottomOf="@+id/doubtsClarifiedProgress" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="05"
+                        android:textColor="@color/bittersweet"
+                        android:textSize="@dimen/_25sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/doubtsPendingProgress"
+                        app:layout_constraintEnd_toEndOf="@+id/doubtsPendingProgress"
+                        app:layout_constraintStart_toStartOf="@+id/doubtsPendingProgress"
+                        app:layout_constraintTop_toTopOf="@+id/doubtsPendingProgress" />
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/doubtsPendingProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:max="100"
+                        android:progress="50"
+                        android:rotation="180"
+                        app:indicatorColor="@color/bittersweet"
+                        app:indicatorSize="@dimen/_60sdp"
+                        app:layout_constraintBottom_toTopOf="@+id/pendingLabel"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/doubtsClarifiedProgress"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        app:trackColor="@color/alice_blue"
+                        app:trackThickness="@dimen/_3sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/pendingLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Doubts\nPending"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/doubtsPendingProgress"
+                        app:layout_constraintStart_toStartOf="@+id/doubtsPendingProgress"
+                        app:layout_constraintTop_toBottomOf="@+id/doubtsPendingProgress" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/tabView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_20sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doubtsCard">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/doubtTabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@color/window_background"
+                        android:clipToPadding="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tabGravity="fill"
+                        app:tabIndicatorColor="@color/carolina_blue"
+                        app:tabIndicatorGravity="stretch"
+                        app:tabMaxWidth="0dp"
+                        app:tabMode="fixed"
+                        app:tabPaddingEnd="10dp"
+                        app:tabPaddingStart="10dp"
+                        app:tabSelectedTextColor="@android:color/white"
+                        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                        app:tabTextColor="@color/carolina_blue">
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/clarified" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pending" />
+
+                    </com.google.android.material.tabs.TabLayout>
+
+                    <View
+                        android:layout_width="@dimen/_3sdp"
+                        android:layout_height="0dp"
+                        android:background="@color/window_background"
+                        android:elevation="@dimen/_4sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/doubtTabLayout"
+                        app:layout_constraintEnd_toEndOf="@+id/doubtTabLayout"
+                        app:layout_constraintStart_toStartOf="@+id/doubtTabLayout"
+                        app:layout_constraintTop_toTopOf="@+id/doubtTabLayout" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <FrameLayout
+                android:id="@+id/doubtFrameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabView" />
+
+            <!--<androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/askDoubt"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="@dimen/_51sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_95sdp"
+                android:src="@drawable/doubt_ask"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.futuraeducation.helper.SimpleStatefulLayout>
+</FrameLayout>
