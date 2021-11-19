@@ -152,7 +152,7 @@
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginHorizontal="@dimen/_50sdp"
                 android:layout_marginVertical="@dimen/_20sdp"
-                android:backgroundTint="@color/umr_purple"
+                android:backgroundTint="@color/redtext"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/login_btn"
                 android:textAllCaps="false"

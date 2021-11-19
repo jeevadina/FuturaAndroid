@@ -10,8 +10,9 @@
         android:id="@+id/splashScreenImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="visible"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_splash_v1" />
+        android:src="@drawable/ic_futura_splash" />
 
 <!--    <ImageView
         android:id="@+id/SplashScreenImage"

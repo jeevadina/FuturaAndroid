@@ -6,8 +6,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -17,6 +15,21 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
 import androidx.viewpager2.widget.ViewPager2
+import com.futuraeducation.adapter.HomeTabViewAdapter
+import com.futuraeducation.database.DatabaseHelper
+import com.futuraeducation.doubt.AskDoubtActivity
+import com.futuraeducation.fragment.LogOutBottomSheetFragment
+import com.futuraeducation.fragment.UpdateBottomSheetFragment
+import com.futuraeducation.helper.BottomNavigationBehavior
+import com.futuraeducation.model.onBoarding.LoginData
+import com.futuraeducation.network.NetworkHelper
+import com.futuraeducation.network.OnNetworkResponse
+import com.futuraeducation.profile.ProfileActivity
+import com.futuraeducation.qrCode.QRCodeActivity
+import com.futuraeducation.utils.Define
+import com.futuraeducation.utils.ImageLoader
+import com.futuraeducation.utils.MyPreferences
+import com.futuraeducation.utils.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateInfo
@@ -29,29 +42,12 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.gson.Gson
-import com.futuraeducation.adapter.HomeTabViewAdapter
-import com.futuraeducation.database.DatabaseHelper
-import com.futuraeducation.doubt.AskDoubtActivity
-import com.futuraeducation.fragment.LogOutBottomSheetFragment
-import com.futuraeducation.fragment.UpdateBottomSheetFragment
-import com.futuraeducation.helper.BottomNavigationBehavior
-import com.futuraeducation.model.OnEventData
-import com.futuraeducation.model.onBoarding.LoginData
-import com.futuraeducation.network.NetworkHelper
-import com.futuraeducation.network.OnNetworkResponse
-import com.futuraeducation.profile.ProfileActivity
-import com.futuraeducation.qrCode.QRCodeActivity
-import com.futuraeducation.utils.Define
-import com.futuraeducation.utils.ImageLoader
-import com.futuraeducation.utils.MyPreferences
-import com.futuraeducation.utils.Utils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_notification_icon.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import kotlinx.android.synthetic.main.layout_toolbar_custom.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
-import org.greenrobot.eventbus.EventBus
 
 
 class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdatedListener {
@@ -85,7 +81,6 @@ class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdated
 
         loginResponse =
             Gson().fromJson(MyPreferences(this).getString(Define.LOGIN_DATA), LoginData::class.java)
-
 
         //in app update checker
         appUpdateManager = AppUpdateManagerFactory.create(this)

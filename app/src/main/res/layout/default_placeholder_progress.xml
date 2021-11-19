@@ -20,7 +20,7 @@
                 android:layout_height="@dimen/_65sdp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:indeterminateTint="#55075b"
+                android:indeterminateTint="#A4FF0050"
                 android:indeterminateTintMode="src_atop"/>
 
             <ImageView
@@ -29,7 +29,7 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:src="@drawable/splash_img" />
+                android:src="@mipmap/ic_futura_launcher" />
         </RelativeLayout>
 
         <TextView
