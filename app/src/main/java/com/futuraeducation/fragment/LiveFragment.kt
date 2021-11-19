@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.material.tabs.TabLayoutMediator
-import com.google.gson.Gson
 import com.futuraeducation.R
-import com.futuraeducation.adapter.StudyAdapter
 import com.futuraeducation.fragment.practiceTest.ScheduledTestFragment
 import com.futuraeducation.helper.MyProgressBar
+import com.futuraeducation.model.Data
 import com.futuraeducation.model.LiveResponse
 import com.futuraeducation.model.onBoarding.LoginData
 import com.futuraeducation.network.ApiUtils
@@ -22,11 +22,13 @@ import com.futuraeducation.network.URLHelper.getSessions
 import com.futuraeducation.network.UrlConstants.kLIVE
 import com.futuraeducation.utils.Define
 import com.futuraeducation.utils.MyPreferences
+import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_live.*
-import kotlinx.android.synthetic.main.fragment_live.viewPager
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,6 +87,15 @@ class LiveFragment : Fragment(), OnNetworkResponse {
 
     }
 
+    private fun callViewPager(data: List<Data>) {
+        val fm: FragmentManager = requireFragmentManager()
+        val pagerAdapter = FragmentPager(data,fm)
+        // Here you would declare which page to visit on creation
+        // Here you would declare which page to visit on creation
+        studyRecycler.adapter = pagerAdapter
+        studyRecycler.currentItem = 1
+    }
+
     companion object {
         fun newInstance(param1: String, param2: String) =
             LiveFragment().apply {
@@ -134,22 +145,18 @@ class LiveFragment : Fragment(), OnNetworkResponse {
         if (responseCode == networkHelper.responseSuccess && tag == "liveSessions") {
             val liveItemResponse = Gson().fromJson(response, LiveResponse::class.java)
             if (liveItemResponse.data.isNotEmpty()) {
-                val studyAdapter = StudyAdapter(requireContext(), liveItemResponse.data)
-                studyRecycler.adapter = studyAdapter
+                callViewPager(liveItemResponse.data)
+                studyRecycler.visibility = View.VISIBLE
                 errorLive.visibility = View.GONE
-                recyclerScroll.visibility = View.VISIBLE
                 upcomingSession.visibility = View.VISIBLE
                 upcomingSession.background = null
-                //StudyLabel.visibility = View.VISIBLE
                 noUpcomingSession.visibility = View.GONE
                 retryLive.visibility =View.GONE
                 retryLive1.visibility =View.GONE
                 retryLive2.visibility =View.GONE
             }else{
-                upcomingSession.setBackgroundResource(R.drawable.ic_no_live)
-                recyclerScroll.visibility = View.GONE
+                studyRecycler.visibility = View.GONE
                 errorLive.visibility = View.VISIBLE
-               // StudyLabel.visibility = View.VISIBLE
                 retryLive.visibility =View.VISIBLE
                 retryLive1.visibility =View.VISIBLE
                 retryLive2.visibility =View.VISIBLE
@@ -158,10 +165,8 @@ class LiveFragment : Fragment(), OnNetworkResponse {
                 }
             }
         }else{
-            upcomingSession.setBackgroundResource(R.drawable.ic_no_live)
-            recyclerScroll.visibility = View.GONE
+            studyRecycler.visibility = View.GONE
             errorLive.visibility = View.VISIBLE
-           // StudyLabel.visibility = View.VISIBLE
             retryLive.visibility =View.VISIBLE
             retryLive1.visibility =View.VISIBLE
             retryLive2.visibility =View.VISIBLE
@@ -172,7 +177,6 @@ class LiveFragment : Fragment(), OnNetworkResponse {
     }
     override fun onPause() {
         super.onPause()
-
         requireArguments().putInt("currentPosition", viewPager.currentItem)
     }
     class LiveFragmentTabAdapter(fm: FragmentActivity, val titles: Array<String>) : FragmentStateAdapter(fm) {
@@ -187,5 +191,18 @@ class LiveFragment : Fragment(), OnNetworkResponse {
                 else -> ScheduledTestFragment.newInstance(titles[position],"")
             }
         }
+    }
+}
+
+class FragmentPager(val mylist: List<Data>, fm: FragmentManager?) :
+    FragmentPagerAdapter(fm!!) {
+
+    override fun getItem(position: Int): Fragment {
+        return CurrentLiveFragment.newInstance(mylist[position].url, mylist[position].topicName, mylist[position].startDateTime)
+    }
+
+    override fun getCount(): Int {
+        // TODO Auto-generated method stub
+        return mylist.size
     }
 }

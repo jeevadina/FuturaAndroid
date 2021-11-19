@@ -16,25 +16,54 @@
             android:fillViewport="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
                 <LinearLayout
                     android:id="@+id/upcomingSession"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+
+
+             <!--       <com.futuraeducation.helper.NestedScrollableHost
+                        android:id="@+id/recyclerScroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent">
+-->
+                        <!--<androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/studyRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="3"
+                            tools:listitem="@layout/row_study" />-->
+
+                    <com.futuraeducation.helper.NestedScrollableHost
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_200sdp"
+                            android:id="@+id/studyRecycler"
+                            />
+
+                    </com.futuraeducation.helper.NestedScrollableHost>
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/errorLive"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_200sdp"
                         android:orientation="vertical"
+                        android:background="@drawable/ic_no_live"
                         android:padding="@dimen/_20sdp"
-                        android:visibility="visible">
+                        android:visibility="gone">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/noUpcomingSession"
@@ -84,36 +113,10 @@
                             android:visibility="visible" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <com.futuraeducation.helper.NestedScrollableHost
-                        android:id="@+id/recyclerScroll"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="visible"
-                        app:layout_constraintEnd_toEndOf="parent">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/studyRecycler"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_5sdp"
-                            android:layout_marginStart="@dimen/_8sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:orientation="horizontal"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            tools:itemCount="3"
-                            tools:listitem="@layout/row_study" />
-
-                    </com.futuraeducation.helper.NestedScrollableHost>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/upcomingSession">
+                    <!--
+                                        //</com.futuraeducation.helper.NestedScrollableHost>
+                    -->
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
@@ -124,21 +127,17 @@
                         android:layout_marginEnd="@dimen/_10sdp"
                         app:cardCornerRadius="@dimen/_11sdp">
 
-                    <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/slidingTabLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:tabIndicatorGravity="stretch"
-                        app:tabIndicatorColor="@color/umr_purple"
-                        app:tabMode="fixed"
-                        app:tabSelectedTextColor="@color/white"
-                        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-                        app:tabTextColor="@color/tab_default_color" />
+                        <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/slidingTabLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:tabIndicatorGravity="stretch"
+                            app:tabIndicatorColor="@color/umr_purple"
+                            app:tabMode="fixed"
+                            app:tabSelectedTextColor="@color/white"
+                            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                            app:tabTextColor="@color/tab_default_color" />
                     </com.google.android.material.card.MaterialCardView>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.4dp"
-                        android:background="@color/divider_color" />
 
                     <com.futuraeducation.helper.NestedScrollableHost
                         android:layout_width="match_parent"
@@ -154,9 +153,6 @@
                     </com.futuraeducation.helper.NestedScrollableHost>
 
                 </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         </androidx.core.widget.NestedScrollView>
 

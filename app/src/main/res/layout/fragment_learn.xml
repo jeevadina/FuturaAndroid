@@ -24,12 +24,6 @@
 
             <include layout="@layout/layout_toolbar_custom" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_150sdp"
-                android:src="@drawable/ic_card_v1"/>
-
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/previosVideo"
                 android:layout_width="wrap_content"
