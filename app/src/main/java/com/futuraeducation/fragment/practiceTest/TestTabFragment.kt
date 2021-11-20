@@ -247,7 +247,9 @@ class TestTabFragment : Fragment(), TestClickListener, OnNetworkResponse {
             Gson().fromJson(myPreferences.getString(Define.LOGIN_DATA), LoginData::class.java)
         requestTest(batchId)
 
-       // initAdapters()
+        EventBus.getDefault().register(this)
+
+        // initAdapters()
 
     }
 
