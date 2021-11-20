@@ -1,83 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".learn.LearnVideoActivity">
+    android:background="#FFF0BE"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <include
-        android:id="@+id/toolbarLayout"
-        layout="@layout/layout_toolbar" />
+    <include layout="@layout/layout_backpress" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/tabView"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        app:cardElevation="@dimen/_4sdp"
-        app:cardCornerRadius="@dimen/_12sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_35sdp"
-                android:background="@color/window_background"
-                android:clipToPadding="true"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tabGravity="fill"
-                app:tabIndicatorColor="@color/carolina_blue"
-                app:tabIndicatorGravity="stretch"
-                app:tabMaxWidth="0dp"
-                app:tabMode="fixed"
-                app:tabPaddingEnd="10dp"
-                app:tabPaddingStart="10dp"
-                app:tabSelectedTextColor="@android:color/white"
-                app:tabTextAppearance="@style/TabLayoutStyle"
-                app:tabTextColor="@color/carolina_blue">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/video" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/study_material" />
-
-
-            </com.google.android.material.tabs.TabLayout>
-
-            <View
-                android:layout_width="@dimen/_3sdp"
-                android:layout_height="0dp"
-                android:background="@color/window_background"
-                android:elevation="@dimen/_4sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/tabLayout"
-                app:layout_constraintEnd_toEndOf="@+id/tabLayout"
-                app:layout_constraintStart_toStartOf="@+id/tabLayout"
-                app:layout_constraintTop_toTopOf="@+id/tabLayout" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
+        android:text="Gravitation"
+        android:id="@+id/titleCountLearn"
+        android:layout_marginTop="@dimen/_10sdp"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/redtext"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:fontFamily="@font/roboto_bold"/>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabView" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/top_corner_bg"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/_10sdp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/tabView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_12sdp"
+            app:cardElevation="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarLayout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:background="@color/window_background"
+                    android:clipToPadding="true"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="@color/umr_purple"
+                    app:tabIndicatorGravity="stretch"
+                    app:tabMaxWidth="0dp"
+                    app:tabMode="fixed"
+                    app:tabPaddingEnd="10dp"
+                    app:tabPaddingStart="10dp"
+                    app:tabSelectedTextColor="@android:color/white"
+                    app:tabTextAppearance="@style/TabLayoutStyle"
+                    app:tabTextColor="@color/greytext">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/video" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/study_material" />
+
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <View
+                    android:layout_width="@dimen/_3sdp"
+                    android:layout_height="0dp"
+                    android:background="@color/window_background"
+                    android:elevation="@dimen/_4sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tabLayout"
+                    app:layout_constraintEnd_toEndOf="@+id/tabLayout"
+                    app:layout_constraintStart_toStartOf="@+id/tabLayout"
+                    app:layout_constraintTop_toTopOf="@+id/tabLayout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabView" />
+
+    </LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

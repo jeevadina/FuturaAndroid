@@ -22,6 +22,7 @@ import com.futuraeducation.network.URLHelper.getSessions
 import com.futuraeducation.network.UrlConstants.kLIVE
 import com.futuraeducation.utils.Define
 import com.futuraeducation.utils.MyPreferences
+import com.futuraeducation.utils.Utils
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_live.*
@@ -62,6 +63,7 @@ class LiveFragment : Fragment(), OnNetworkResponse {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Utils.updateStatusBarColor(requireActivity(),"#550D61")
         liveFragmentTabAdapter = LiveFragmentTabAdapter(requireActivity(), titles)
         viewPager.adapter = liveFragmentTabAdapter
 

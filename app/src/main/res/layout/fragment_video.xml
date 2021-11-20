@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_15sdp"
                 android:ellipsize="end"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:text="Importance Identities in Trigonometry"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_14sdp"

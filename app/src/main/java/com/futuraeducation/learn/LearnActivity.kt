@@ -22,6 +22,7 @@ import com.futuraeducation.model.onBoarding.LoginData
 import com.futuraeducation.network.NetworkHelper
 import com.futuraeducation.utils.Define
 import com.futuraeducation.utils.MyPreferences
+import com.futuraeducation.utils.Utils
 import kotlinx.android.synthetic.main.activity_learn.*
 import kotlinx.android.synthetic.main.layout_backpress.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -43,6 +44,7 @@ class LearnActivity : AppCompatActivity(), VideoClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn)
 
+        Utils.updateStatusBarColor(this,"#FFF0BE")
 
         val data = intent.getStringExtra("data")
         position = intent.getIntExtra("position",0)
@@ -135,6 +137,7 @@ class LearnActivity : AppCompatActivity(), VideoClickListener {
         myPreferences.setString(Define.VIDEO_DATA, Gson().toJson(videoMaterial))
         myPreferences.setInt(Define.VIDEO_POS, position)
         val intent = Intent(this, LearnVideoActivity::class.java)
+        intent.putExtra("courseName",chaptersList!![this.position].courseName)
         startActivity(intent)
     }
 }

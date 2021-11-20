@@ -39,6 +39,7 @@ import com.futuraeducation.profile.ProfileActivity
 import com.futuraeducation.qrCode.QRCodeActivity
 import com.futuraeducation.utils.Define
 import com.futuraeducation.utils.MyPreferences
+import com.futuraeducation.utils.Utils
 import kotlinx.android.synthetic.main.fragment_learn.*
 import kotlinx.android.synthetic.main.layout_toolbar_custom.*
 import org.greenrobot.eventbus.EventBus
@@ -79,6 +80,8 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
     @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Utils.updateStatusBarColor(requireActivity(),"#ffffff")
         loginData =
             Gson().fromJson(myPreferences.getString(Define.LOGIN_DATA), LoginData::class.java)
 

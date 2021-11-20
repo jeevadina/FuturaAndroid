@@ -21,7 +21,9 @@ import com.futuraeducation.learn.fragment.VideoFragment
 import com.futuraeducation.model.VideoMaterial
 import com.futuraeducation.utils.Define
 import com.futuraeducation.utils.MyPreferences
+import com.futuraeducation.utils.Utils
 import kotlinx.android.synthetic.main.activity_learn_video.*
+import kotlinx.android.synthetic.main.layout_backpress.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import java.lang.reflect.Type
 
@@ -36,6 +38,8 @@ class LearnVideoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn_video)
+        Utils.updateStatusBarColor(this,"#FFF0BE")
+        Utils.updateStatusBarColor(this,"#FFF0BE")
 
         sharedPreferences = getSharedPreferences("MySharedPref", 0)
         myPreferences = MyPreferences(this)
@@ -75,27 +79,38 @@ class LearnVideoActivity : AppCompatActivity() {
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
 
+        val courseName = intent.getStringExtra("courseName")
+        if(courseName != null){
+            titleCountLearn.text = courseName
+        }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        try {
-            menuInflater.inflate(R.menu.menu_learn, menu)
-            val item1 =
-                menu.findItem(R.id.action_menu_notification).actionView.findViewById(R.id.layoutNotification) as RelativeLayout
-            item1.setOnClickListener {
-                startActivity(Intent(this, NotificationsActivity::class.java))
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
+    override fun onStart() {
+        super.onStart()
+        logoTool.setOnClickListener {
+            finish()
         }
-        return true
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> finish()
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        try {
+//            menuInflater.inflate(R.menu.menu_learn, menu)
+//            val item1 =
+//                menu.findItem(R.id.action_menu_notification).actionView.findViewById(R.id.layoutNotification) as RelativeLayout
+//            item1.setOnClickListener {
+//                startActivity(Intent(this, NotificationsActivity::class.java))
+//            }
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            android.R.id.home -> finish()
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
 }

@@ -29,11 +29,12 @@
 -->
             <ImageView
                 android:layout_gravity="bottom"
-                android:layout_width="@dimen/_80sdp"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:maxWidth="@dimen/_40sdp"
                 android:maxHeight="@dimen/_60sdp"
-                android:src="@drawable/upmyranks_logo" />
+                android:background="@color/black"
+                android:src="@mipmap/ic_futura_launcher" />
         </com.google.android.exoplayer2.ui.StyledPlayerView>
 
         <LinearLayout

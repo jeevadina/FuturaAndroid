@@ -1,5 +1,6 @@
 package com.futuraeducation.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -19,6 +20,11 @@ import java.text.DateFormatSymbols
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import android.view.WindowManager
+
+
+
+
 
 
 object Utils {
@@ -220,6 +226,14 @@ object Utils {
             true
         } catch (e: PackageManager.NameNotFoundException) {
             false
+        }
+    }
+
+    fun updateStatusBarColor(activity: Activity, color:String){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window = activity.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = Color.parseColor(color)
         }
     }
 

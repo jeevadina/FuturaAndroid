@@ -18,6 +18,7 @@ import com.futuraeducation.network.OnNetworkResponse
 import com.futuraeducation.network.URLHelper
 import com.futuraeducation.utils.Define
 import com.futuraeducation.utils.MyPreferences
+import com.futuraeducation.utils.Utils
 import ir.mahozad.android.PieChart
 import kotlinx.android.synthetic.main.fragment_test.*
 import org.greenrobot.eventbus.EventBus
@@ -51,7 +52,7 @@ class TestFragment : Fragment(), OnNetworkResponse {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        Utils.updateStatusBarColor(requireActivity(),"#550D61")
         childFragmentManager.beginTransaction()
             .replace(R.id.fragment_frame, TestTabFragment.newInstance("", ""))
             .commit()

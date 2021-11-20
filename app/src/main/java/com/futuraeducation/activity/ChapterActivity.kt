@@ -16,6 +16,7 @@ import com.futuraeducation.network.OnNetworkResponse
 import com.futuraeducation.network.URLHelper
 import com.futuraeducation.utils.Define
 import com.futuraeducation.utils.MyPreferences
+import com.futuraeducation.utils.Utils
 import kotlinx.android.synthetic.main.activity_chapter.*
 import kotlinx.android.synthetic.main.layout_backpress.*
 import kotlinx.android.synthetic.main.layout_recyclerview.*
@@ -34,7 +35,7 @@ class ChapterActivity : AppCompatActivity(), OnNetworkResponse {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chapter)
-
+        Utils.updateStatusBarColor(this,"#FFF0BE")
         myPreferences = MyPreferences(this)
         networkHelper = NetworkHelper(this)
         myProgressBar = MyProgressBar(this)
