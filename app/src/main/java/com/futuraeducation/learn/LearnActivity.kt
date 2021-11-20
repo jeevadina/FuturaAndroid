@@ -16,6 +16,7 @@ import com.futuraeducation.adapter.Learn.TopicVideoAdapter
 import com.futuraeducation.adapter.Learn.VideoClickListener
 import com.futuraeducation.adapter.SubTopicsAdapter
 import com.futuraeducation.model.VideoMaterial
+import com.futuraeducation.model.chapter.ChapterResponseData
 import com.futuraeducation.model.chapter.TopicMaterialResponse
 import com.futuraeducation.model.onBoarding.LoginData
 import com.futuraeducation.network.NetworkHelper
@@ -24,10 +25,11 @@ import com.futuraeducation.utils.MyPreferences
 import kotlinx.android.synthetic.main.activity_learn.*
 import kotlinx.android.synthetic.main.layout_backpress.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import java.lang.reflect.Type
 
 
 class LearnActivity : AppCompatActivity(), VideoClickListener {
-
+    var chaptersList: List<ChapterResponseData>?= null
     private var loginData = LoginData()
     lateinit var networkHelper: NetworkHelper
     lateinit var myPreferences: MyPreferences
@@ -35,25 +37,28 @@ class LearnActivity : AppCompatActivity(), VideoClickListener {
     lateinit var subTopicListAdapter: SubTopicsAdapter
     var chapterId = ""
     var batchId = ""
+    var position = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn)
 
 
-        titleLearn.text = "Chapter "+ intent.getStringExtra("position")!!
-        titleCountLearn.text = intent.getStringExtra("title")!!
+        val data = intent.getStringExtra("data")
+        position = intent.getIntExtra("position",0)
+        if(data != null){
+            val listType: Type = object : TypeToken<ArrayList<ChapterResponseData?>?>() {}.type
+            chaptersList = Gson().fromJson(data, listType)
+        }
 
-        chapterId = intent.getStringExtra("id")!!
-        batchId = intent.getStringExtra("batchID")!!
-
-        val datas: List<TopicMaterialResponse> =
-            Gson().fromJson(
-                intent.getStringExtra("materials"),
-                object : TypeToken<List<TopicMaterialResponse?>?>() {}.type
-            )
-
-        topicResponse = datas
+        displayData(position)
+//        val datas: List<TopicMaterialResponse> =
+//            Gson().fromJson(
+//                intent.getStringExtra("materials"),
+//                object : TypeToken<List<TopicMaterialResponse?>?>() {}.type
+//            )
+//
+//        topicResponse = datas
 
         myPreferences = MyPreferences(this)
         networkHelper = NetworkHelper(this)
@@ -62,11 +67,24 @@ class LearnActivity : AppCompatActivity(), VideoClickListener {
         nxtChapter.visibility = View.VISIBLE
 
         nxtChapter.setOnClickListener {
-            finish()
+            position += 1
+            displayData(position= position)
         }
 
         logoTool.setOnClickListener {
             finish()
+        }
+
+    }
+
+    private fun displayData(position: Int){
+        if(chaptersList != null){
+            titleLearn.text = "Chapter ${position+1}"
+            titleCountLearn.text = chaptersList!![position].courseName
+
+            chapterId = chaptersList!![position].id!!
+            batchId = intent.getStringExtra("batchID")!!
+            topicResponse = chaptersList!![position].topicMaterialResponses
         }
 
         val topicData = ArrayList<TopicMaterialResponse>()
@@ -81,7 +99,7 @@ class LearnActivity : AppCompatActivity(), VideoClickListener {
             tabsRecycler.adapter = titleAdapter
         } else {
             tabsRecycler.visibility = View.GONE
-           // showErrorMsg("Currently no topics available.")
+            // showErrorMsg("Currently no topics available.")
         }
     }
 

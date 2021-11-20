@@ -92,11 +92,12 @@ class SubjectListAdapter(
         holder.itemView.setOnClickListener {
             val intent = Intent(context, LearnActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("title", chaptersList[position].courseName)
-            intent.putExtra("id", chaptersList[position].id)
-            intent.putExtra("materials", Gson().toJson(data.topicMaterialResponses))
+//            intent.putExtra("title", chaptersList[position].courseName)
+//            intent.putExtra("id", chaptersList[position].id)
+//            intent.putExtra("materials", Gson().toJson(data.topicMaterialResponses))
             intent.putExtra("batchID", batchId)
-            intent.putExtra("position", (position+1).toString())
+            intent.putExtra("position", position)
+            intent.putExtra("data", Gson().toJson(chaptersList))
             Log.e("popPos", position.toString())
             context.startActivity(intent)
         }
@@ -105,4 +106,6 @@ class SubjectListAdapter(
     override fun getItemCount(): Int {
         return chaptersList.size
     }
+
+
 }
