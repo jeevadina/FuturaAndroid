@@ -99,7 +99,7 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
     }
 
     private fun setMenuItems() {
-        userNameTool.text = loginData.userDetail?.userName.toString()
+        userNameTool.text = "Hi "+loginData.userDetail?.userName.toString()
 
         val newList = ArrayList<String>()
         newList.apply {
@@ -127,7 +127,7 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
         }
 
         qrScannerTool.setOnClickListener{
-            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+            if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED
             ) {
                 openQRCodeScreen()
@@ -141,6 +141,10 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
         }
     }
 
+    private fun openQRCodeScreen() {
+        val intent = Intent(requireContext(), QRCodeActivity::class.java)
+        startActivity(intent)
+    }
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -151,12 +155,6 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
             openQRCodeScreen()
         }
     }
-
-    fun openQRCodeScreen() {
-        val intent = Intent(requireContext(), QRCodeActivity::class.java)
-        startActivity(intent)
-    }
-
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
@@ -279,7 +277,7 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
             layoutManager.alignItems = AlignItems.CENTER
             layoutManager.flexDirection = FlexDirection.ROW
             layoutManager.flexWrap = FlexWrap.WRAP
-            subjectsRecycler.layoutManager = layoutManager
+         //   subjectsRecycler.layoutManager = layoutManager
             subjectsRecycler.adapter = adapter
         } else {
             showErrorMsg("No subject found.")

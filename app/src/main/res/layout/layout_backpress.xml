@@ -5,27 +5,25 @@
     android:id="@+id/toolbar_chapter"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:id="@+id/logoTool"
         android:layout_width="@dimen/_30sdp"
         android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         android:layout_marginStart="@dimen/_16sdp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="250dp"
-        app:cardElevation="@dimen/_2sdp">
+       android:background="@drawable/bg_circle_action"
+        android:elevation="@dimen/_2sdp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/_8sdp"
-        android:tint="@color/black"
-        android:layout_gravity="center"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_back"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_back"
+            android:tint="@color/black" />
 
-    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
