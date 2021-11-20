@@ -39,6 +39,8 @@ import kotlinx.android.synthetic.main.fragment_test_tab.*
 import kotlinx.android.synthetic.main.test_layout_child.view.*
 import kotlinx.android.synthetic.main.test_layout_parent.view.*
 import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -92,7 +94,7 @@ class TestTabFragment : Fragment(), TestClickListener, OnNetworkResponse {
         }
 
         val params = HashMap<String, String>()
-        params["batchId"] = loginData.userDetail?.batchList?.get(0)?.id.toString()
+        params["batchId"] = batchId
 
         params["studentId"] = loginData.userDetail?.usersId.toString()
 
@@ -126,7 +128,7 @@ class TestTabFragment : Fragment(), TestClickListener, OnNetworkResponse {
 
         networkHelper.getCall(
             URLHelper.scheduleTestsForStudent + "?batchId=${
-                loginData.userDetail?.batchList?.get(0)?.id
+                batchId
             }&studentId=${loginData.userDetail?.usersId}",
             "scheduledTest",
             ApiUtils.getHeader(requireContext()),
@@ -140,7 +142,7 @@ class TestTabFragment : Fragment(), TestClickListener, OnNetworkResponse {
             myProgressBar.show()
         }
         val params = HashMap<String, String>()
-        params["batchId"] = loginData.userDetail?.batchList?.get(0)?.id.toString()
+        params["batchId"] = batchId
 
         params["studentId"] = loginData.userDetail?.usersId.toString()
 
@@ -461,12 +463,12 @@ class TestTabFragment : Fragment(), TestClickListener, OnNetworkResponse {
             }
     }
 
-//    @Subscribe(threadMode = ThreadMode.MAIN)
-//    fun onMessageEvent(event: OnEventData?) {
-//        val data = loginData.userDetail?.batchList?.get(event?.batchPosition!!)
-//        batchId = data?.id!!
-//        requestTest(data?.id!!)
-//    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: OnEventData?) {
+        val data = loginData.userDetail?.batchList?.get(event?.batchPosition!!)
+        batchId = data?.id!!
+        requestTest(data?.id!!)
+    }
 
 //    private fun subjectCall(subjectList: ArrayList<String>) {
 //        if (subjectList.size > 0) {
