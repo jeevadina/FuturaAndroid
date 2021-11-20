@@ -8,15 +8,21 @@
     tools:context=".profile.ProfileActivity">
 
     <include
-        android:id="@+id/toolbarLayout"
+        android:id="@+id/toolbarLayout1"
         layout="@layout/layout_toolbar"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/toolbarLayout"
+        layout="@layout/layout_backpress" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout">
+        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout"
+        tools:layout_editor_absoluteX="-164dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -65,6 +71,7 @@
                 android:paddingHorizontal="@dimen/_2sdp"
                 android:textAlignment="center"
                 android:textSize="@dimen/_12sdp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,6 +97,7 @@
                 android:layout_height="@dimen/_1sdp"
                 android:layout_marginVertical="@dimen/_8sdp"
                 android:background="@color/alice_blue"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@id/className" />
@@ -100,6 +108,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/profile_completion"
                 android:textSize="@dimen/_12sdp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/statusProgress"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toTopOf="@+id/statusProgress" />
@@ -112,6 +121,7 @@
                 android:layout_marginVertical="@dimen/_20sdp"
                 android:max="100"
                 android:progress="70"
+                android:visibility="gone"
                 app:indicatorColor="@color/carolina_blue"
                 app:layout_constraintEnd_toStartOf="@+id/profileValue"
                 app:layout_constraintStart_toEndOf="@id/profileCompletion"
@@ -126,6 +136,7 @@
                 android:layout_height="wrap_content"
                 android:text="70%"
                 android:textSize="@dimen/_12sdp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/statusProgress"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/statusProgress"
@@ -139,6 +150,7 @@
                 android:text="@string/account_details"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@+id/statusProgress" />
@@ -148,6 +160,7 @@
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
                 android:src="@drawable/ic_phone"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/mobileNumber"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toTopOf="@+id/mobileNumber" />
@@ -160,6 +173,7 @@
                 android:layout_marginVertical="@dimen/_15sdp"
                 android:text="+91-9876543210"
                 android:textSize="@dimen/_12sdp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@+id/editPhoneIcon"
                 app:layout_constraintStart_toEndOf="@+id/phoneIcon"
                 app:layout_constraintTop_toBottomOf="@+id/accountsDetails" />
@@ -169,6 +183,7 @@
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
                 android:src="@drawable/ic_edit"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/mobileNumber"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/mobileNumber"
@@ -180,6 +195,7 @@
                 android:layout_height="@dimen/_1sdp"
                 android:layout_marginVertical="@dimen/_12sdp"
                 android:background="@color/alice_blue"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@+id/mobileNumber" />
@@ -192,6 +208,7 @@
                 android:text="@string/personal_details"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
+                android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@id/editPersonalIcon"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@+id/mobileDivider" />
@@ -201,6 +218,7 @@
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
                 android:src="@drawable/ic_edit"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/personalDetails"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/personalDetails"
@@ -211,6 +229,7 @@
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
                 android:src="@drawable/ic_user"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/profileName"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toTopOf="@+id/profileName" />
@@ -223,6 +242,7 @@
                 android:layout_marginVertical="@dimen/_15sdp"
                 android:text="John Smith"
                 android:textSize="@dimen/_12sdp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/nameIcon"
                 app:layout_constraintTop_toBottomOf="@+id/personalDetails" />
@@ -233,6 +253,7 @@
                 android:layout_height="@dimen/_1sdp"
                 android:layout_marginVertical="@dimen/_6sdp"
                 android:background="@color/alice_blue"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@+id/profileName"
                 app:layout_constraintTop_toBottomOf="@+id/profileName" />
@@ -242,6 +263,7 @@
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
                 android:src="@drawable/ic_phone"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/email"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toTopOf="@+id/email" />
@@ -255,6 +277,7 @@
                 android:alpha="0.6"
                 android:text="Add your email"
                 android:textSize="@dimen/_12sdp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/emailIcon"
                 app:layout_constraintTop_toBottomOf="@+id/nameDivider" />
@@ -265,6 +288,7 @@
                 android:layout_height="@dimen/_1sdp"
                 android:layout_marginVertical="@dimen/_6sdp"
                 android:background="@color/alice_blue"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@+id/email"
                 app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -274,6 +298,7 @@
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
                 android:src="@drawable/ic_gender"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/gender"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toTopOf="@+id/gender" />
@@ -287,6 +312,7 @@
                 android:alpha="0.6"
                 android:text="Add your gender"
                 android:textSize="@dimen/_12sdp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/genderIcon"
                 app:layout_constraintTop_toBottomOf="@+id/emailDivider" />
@@ -297,6 +323,7 @@
                 android:layout_height="@dimen/_1sdp"
                 android:layout_marginVertical="@dimen/_6sdp"
                 android:background="@color/alice_blue"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@+id/gender"
                 app:layout_constraintTop_toBottomOf="@+id/gender" />
@@ -306,6 +333,7 @@
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
                 android:src="@drawable/ic_location"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/location"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toTopOf="@+id/location" />
@@ -316,9 +344,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_12sdp"
                 android:layout_marginVertical="@dimen/_10sdp"
-                android:text="Add your location"
                 android:alpha="0.6"
+                android:text="Add your location"
                 android:textSize="@dimen/_12sdp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/locationIcon"
                 app:layout_constraintTop_toBottomOf="@+id/genderDivider" />
@@ -329,6 +358,7 @@
                 android:layout_height="@dimen/_1sdp"
                 android:layout_marginVertical="@dimen/_6sdp"
                 android:background="@color/alice_blue"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@+id/location"
                 app:layout_constraintTop_toBottomOf="@+id/location" />
@@ -338,6 +368,7 @@
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
                 android:src="@drawable/ic_cake"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/birthday"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toTopOf="@+id/birthday" />
@@ -351,6 +382,7 @@
                 android:alpha="0.6"
                 android:text="Add your Birthday"
                 android:textSize="@dimen/_12sdp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toEndOf="@+id/birthdayIcon"
                 app:layout_constraintTop_toBottomOf="@+id/locationDivider" />
@@ -360,8 +392,23 @@
                 android:layout_height="@dimen/_1sdp"
                 android:layout_marginVertical="@dimen/_6sdp"
                 android:background="@color/alice_blue"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@+id/birthday"
+                app:layout_constraintTop_toBottomOf="@+id/birthday" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Logout"
+                android:textAllCaps="false"
+                app:backgroundTint="@color/colorPrimaryDark"
+                app:cornerRadius="@dimen/_7sdp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintHorizontal_bias="0.901"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@+id/birthday" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

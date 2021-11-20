@@ -5,13 +5,16 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import com.google.gson.Gson
 import com.futuraeducation.R
+import com.futuraeducation.fragment.LogOutBottomSheetFragment
 import com.futuraeducation.model.onBoarding.LoginData
 import com.futuraeducation.utils.Define
 import com.futuraeducation.utils.MyPreferences
 import com.futuraeducation.utils.ImageLoader
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.layout_backpress.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 
@@ -87,6 +90,15 @@ class ProfileActivity : AppCompatActivity() {
             location.text = address
             location.alpha = 0.0f
         }*/
+
+        logoTool.setOnClickListener {
+            finish()
+        }
+        btnLogout.setOnClickListener {
+            val bottomSheetFragment = LogOutBottomSheetFragment()
+            bottomSheetFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

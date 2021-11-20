@@ -35,6 +35,7 @@ import com.futuraeducation.network.ApiUtils
 import com.futuraeducation.network.NetworkHelper
 import com.futuraeducation.network.OnNetworkResponse
 import com.futuraeducation.network.URLHelper
+import com.futuraeducation.profile.ProfileActivity
 import com.futuraeducation.qrCode.QRCodeActivity
 import com.futuraeducation.utils.Define
 import com.futuraeducation.utils.MyPreferences
@@ -98,6 +99,7 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
        // selectedCourseTxt.text = "Course Name: ${loginData.userDetail?.batchList?.get(0)?.course?.courseName!!}"
     }
 
+
     private fun setMenuItems() {
         userNameTool.text = "Hi "+loginData.userDetail?.userName.toString()
 
@@ -158,6 +160,10 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
+
+        logoTool.setOnClickListener {
+            startActivity(Intent(requireActivity(),ProfileActivity::class.java))
+        }
     }
 
     override fun onResume() {
