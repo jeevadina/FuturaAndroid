@@ -1,7 +1,9 @@
 package com.futuraeducation.fragment
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.*
@@ -95,7 +99,7 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
     }
 
     private fun setMenuItems() {
-        userNameTool.text = loginData.userDetail?.userName.toString()
+        userNameTool.text = "Hi "+loginData.userDetail?.userName.toString()
 
         val newList = ArrayList<String>()
         newList.apply {
@@ -123,15 +127,34 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
         }
 
         qrScannerTool.setOnClickListener{
-            openQRCodeScreen()
+            if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED
+            ) {
+                openQRCodeScreen()
+            } else {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    arrayOf(Manifest.permission.CAMERA),
+                    100
+                )
+            }
         }
     }
 
-    fun openQRCodeScreen() {
+    private fun openQRCodeScreen() {
         val intent = Intent(requireContext(), QRCodeActivity::class.java)
         startActivity(intent)
     }
-
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 100) {
+            openQRCodeScreen()
+        }
+    }
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
@@ -254,7 +277,7 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
             layoutManager.alignItems = AlignItems.CENTER
             layoutManager.flexDirection = FlexDirection.ROW
             layoutManager.flexWrap = FlexWrap.WRAP
-            subjectsRecycler.layoutManager = layoutManager
+         //   subjectsRecycler.layoutManager = layoutManager
             subjectsRecycler.adapter = adapter
         } else {
             showErrorMsg("No subject found.")

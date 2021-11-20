@@ -1,6 +1,7 @@
 package com.futuraeducation.learn.fragment
 
 import android.content.SharedPreferences
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -26,6 +27,8 @@ import vimeoextractor.VimeoExtractor
 import vimeoextractor.VimeoVideo
 import java.io.*
 import java.lang.reflect.Type
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.Target
 
 
 class VideoFragment : Fragment(),VideoPlayedAdapter.ActionCallback {
@@ -91,15 +94,15 @@ class VideoFragment : Fragment(),VideoPlayedAdapter.ActionCallback {
         }
 
 
-        if (videoData != null) {
-            videoData[pos!!].filePath?.let {
-                ImageLoader.loadFull(
-                    requireContext(),
-                    it, videoPlaceholder
-                )
-            }
-        }
-        ImageLoader.loadFull(requireContext(), videoData[pos!!].filePath!!, videoPlaceholder)
+//        if (videoData != null) {
+//            videoData[pos!!].filePath?.let {
+//                ImageLoader.loadFull(
+//                    requireContext(),
+//                    it, videoPlaceholder
+//                )
+//            }
+//        }
+       // ImageLoader.loadFull(requireContext(), videoData[pos!!].filePath!!, videoPlaceholder)
 
         val myClass = VideoPlayedItem(
             videoUrl = videoData[pos!!].description.toString(),
@@ -113,6 +116,18 @@ class VideoFragment : Fragment(),VideoPlayedAdapter.ActionCallback {
     override fun onStart() {
         super.onStart()
 
+        if(videoData != null) {
+            if(videoData[pos!!].filePath != null){
+                ImageLoader.load(requireContext(),videoData[pos!!].filePath!!, videoPlaceholder)
+            }else {
+                if (videoData[pos!!].description!!.contains("vimeo", true)) {
+
+                } else {
+                    Glide.with(requireContext()).load(videoData[pos!!].filePath).thumbnail(0.1f)
+                        .into(videoPlaceholder)
+                }
+            }
+        }
         videoPlaceholder.setOnClickListener {
             if(videoData != null) {
                 if (videoData[pos!!].description!!.contains("vimeo", true)) {

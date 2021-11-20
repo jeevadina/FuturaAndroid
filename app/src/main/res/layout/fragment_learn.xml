@@ -67,7 +67,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/subjectsRecycler"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     app:spanCount="3"
                     android:background="#3CECECEC"

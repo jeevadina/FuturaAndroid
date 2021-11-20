@@ -22,7 +22,7 @@
                 android:layout_height="@dimen/_65sdp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:indeterminateTint="#55075b"
+                android:indeterminateTint="#A4FF0050"
                 android:indeterminateTintMode="src_atop"/>
 
             <ImageView
@@ -31,7 +31,7 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:src="@drawable/splash_img" />
+                android:src="@mipmap/ic_futura_launcher" />
         </RelativeLayout>
 
         <TextView
@@ -40,7 +40,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="@dimen/_10sdp"
-            android:text="@string/sfl_default_placeholder_offline"
             android:textAppearance="@style/sfl_TextAppearanceStateDefault" />
     </LinearLayout>
 
