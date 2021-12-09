@@ -2,6 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:id="@+id/navigation_dash"
+        android:icon="@drawable/ic_dashboard"
+        android:iconTint="@color/greytext"
+        android:title="DashBoard"
+        app:showAsAction="always|withText"/>
+
     <item
         android:id="@+id/navigation_learn"
         android:icon="@drawable/ic_learn_v1"
@@ -14,16 +22,17 @@
         android:title="Live"
         app:showAsAction="always|withText"/>
 
-<!--    <item
-        android:id="@+id/navigation_practice"
-        android:icon="@drawable/ic_prac_v1"
-        android:title="Practice"
-        app:showAsAction="always|withText"/>-->
-
     <item
      android:id="@+id/navigation_test"
      android:icon="@drawable/ic_test_v1"
      android:title="Test"
      android:visible="true"
-     app:showAsAction="ifRoom"/>
+     app:showAsAction="always|withText"/>
+
+    <item
+        android:id="@+id/navigation_assignment"
+        android:icon="@drawable/ic_prac_v1"
+        android:title="Assignment"
+        android:visible="true"
+        app:showAsAction="always|withText"/>
 </menu>

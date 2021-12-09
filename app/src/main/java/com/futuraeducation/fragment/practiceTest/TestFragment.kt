@@ -80,7 +80,6 @@ class TestFragment : Fragment(), OnNetworkResponse {
     }
 
     private fun requestSessions(batchId: String) {
-        progressView.visibility = View.VISIBLE
         val myBatchList = JSONArray()
         loginData.userDetail?.batchList?.forEach {
             myBatchList.put(it.id!!)
@@ -98,7 +97,6 @@ class TestFragment : Fragment(), OnNetworkResponse {
 
     override fun onNetworkResponse(responseCode: Int, response: String, tag: String) {
         if (responseCode == networkHelper.responseSuccess && tag == "averageBatchTests") {
-            progressView.visibility = View.GONE
             val testResponse = Gson().fromJson(response, AverageBatchTests::class.java)
             db.saveAvg(testResponse)
            // displayData(testResponse)

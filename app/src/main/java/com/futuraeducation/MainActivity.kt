@@ -1,4 +1,4 @@
-package com.futuraeducation
+ package com.futuraeducation
 
 import android.Manifest
 import android.content.Intent
@@ -73,9 +73,6 @@ class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdated
         setContentView(R.layout.activity_main)
 
         //Assign Appbar properties
-       // setSupportActionBar(toolbar_top)
-/*        val actionBar: ActionBar? = supportActionBar
-        actionBar?.setDisplayHomeAsUpEnabled(true)*/
         myPreferences = MyPreferences(this)
         mRemoteConfig = FirebaseRemoteConfig.getInstance()
 
@@ -125,7 +122,7 @@ class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdated
         val layoutParams = navigationView.layoutParams as CoordinatorLayout.LayoutParams
         layoutParams.behavior = bottomNavigationBehavior
 
-        homeTabViewAdapter = HomeTabViewAdapter(this)
+        homeTabViewAdapter = HomeTabViewAdapter(this, loginResponse)
         viewPager.adapter = homeTabViewAdapter
         viewPager.offscreenPageLimit = 3
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -141,43 +138,9 @@ class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdated
             startActivity(intent)
         }
 
-
         //check update via remoteconfig
         updateViews()
-
-      //  setMenuItems()
     }
-
-/*
-    private fun setMenuItems() {
-        userNameTool.text = "Hello Tina,"
-
-        val newList = ArrayList<String>()
-        newList.apply {
-            loginResponse.userDetail?.batchList?.forEach {
-                this.add(it.batchName.toString())
-            }
-            Log.e("popData", newList.toString())
-            val adapter = ArrayAdapter(applicationContext, R.layout.spinner_item, newList)
-            batchSpinner.adapter = adapter
-
-            batchSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    adapterView: AdapterView<*>,
-                    view: View,
-                    i: Int,
-                    l: Long
-                ) {
-                    Log.e("popThread", "1234")
-
-                    EventBus.getDefault().post(OnEventData(i))
-                }
-
-                override fun onNothingSelected(adapterView: AdapterView<*>?) {}
-            }
-        }
-    }
-*/
 
     private fun setNavigationValue(response: LoginData) {
         var userName = ""
@@ -243,16 +206,31 @@ class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdated
             object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    if (position == 0) {
-                        navigationView.selectedItemId = R.id.navigation_learn
-                    } else if (position == 1) {
-                        navigationView.selectedItemId = R.id.navigation_live
-                    } /*else if (position == 2) {
+                    if (loginResponse.role?.equals("COACH")!!) {
+
+                        if (position == 0) {
+                            navigationView.selectedItemId = R.id.navigation_dash
+                        } /*else if (position == 2) {
                         navigationView.selectedItemId = R.id.navigation_home
                     }*/ /*else if (position == 2) {
                         navigationView.selectedItemId = R.id.navigation_practice
-                    }*/ else if (position == 2) {
-                        navigationView.selectedItemId = R.id.navigation_test
+                    }*/ else if (position == 1) {
+                       /*     navigationView.selectedItemId = R.id.navigation_publish
+                        } else if (position == 2) {*/
+                            navigationView.selectedItemId = R.id.navigation_test
+                        }
+                        else if (position == 2) {
+                            navigationView.selectedItemId = R.id.navigation_assignment
+                        }
+                    }else{
+                        if (position == 0) {
+                            navigationView.selectedItemId = R.id.navigation_learn
+                        } else if (position == 1) {
+                            navigationView.selectedItemId = R.id.navigation_test
+                        } else if (position == 2) {
+                            navigationView.selectedItemId = R.id.navigation_assignment
+                        }
+
                     }
                 }
 
@@ -263,34 +241,56 @@ class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdated
             }
         viewPager.registerOnPageChangeCallback(pageChangeCallback)
 
+        if (loginResponse.role?.equals("COACH")!!){
+            navigationView.menu.removeItem(R.id.navigation_learn)
+            navigationView.menu.removeItem(R.id.navigation_live)
+        }else{
+   /*         navigationView.menu.removeItem(R.id.navigation_publish)
+            navigationView.menu.removeItem(R.id.navigation_dash)*/
+            navigationView.menu.removeItem(R.id.navigation_dash)
+            navigationView.menu.removeItem(R.id.navigation_live)
+        }
+
         navigationView.setOnNavigationItemSelectedListener(
             BottomNavigationView.OnNavigationItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.navigation_learn -> {
-                        viewPager.currentItem = 0
-                     //   supportActionBar!!.title = ""
-                        return@OnNavigationItemSelectedListener true
+                if (loginResponse.role?.equals("COACH")!!) {
+
+                    when (item.itemId) {
+                        R.id.navigation_dash -> {
+                            viewPager.currentItem = 0
+                            return@OnNavigationItemSelectedListener true
+                        }
+               /*         R.id.navigation_publish -> {
+                            viewPager.currentItem = 1
+                            return@OnNavigationItemSelectedListener true
+                        }*/
+                        R.id.navigation_test -> {
+                            viewPager.currentItem = 1
+                            return@OnNavigationItemSelectedListener true
+                        }
+                        R.id.navigation_assignment -> {
+                            viewPager.currentItem = 2
+                            return@OnNavigationItemSelectedListener true
+                        }
+
                     }
-                    R.id.navigation_live -> {
-                        viewPager.currentItem = 1
-                     //   supportActionBar!!.title = ""
-                        return@OnNavigationItemSelectedListener true
+                }else{
+                    when (item.itemId) {
+                        R.id.navigation_learn -> {
+                            viewPager.currentItem = 0
+                            return@OnNavigationItemSelectedListener true
+                        }
+                        R.id.navigation_test -> {
+                            viewPager.currentItem = 1
+                            return@OnNavigationItemSelectedListener true
+                        }
+                        R.id.navigation_assignment -> {
+                            viewPager.currentItem = 2
+                            return@OnNavigationItemSelectedListener true
+                        }
+
                     }
-                    /*  R.id.navigation_home -> {
-                          viewPager.currentItem = 2
-                          supportActionBar!!.title = ""
-                          return@OnNavigationItemSelectedListener true
-                      }*/
-                /*    R.id.navigation_practice -> {
-                        viewPager.currentItem = 2
-                       // supportActionBar!!.title = ""
-                        return@OnNavigationItemSelectedListener true
-                    }*/
-                    R.id.navigation_test -> {
-                        viewPager.currentItem = 2
-                       // supportActionBar!!.title = ""
-                        return@OnNavigationItemSelectedListener true
-                    }
+
                 }
                 false
             })
@@ -301,73 +301,6 @@ class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdated
     override fun onNetworkResponse(responseCode: Int, response: String, tag: String) {
 
     }
-
-/*
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_home, menu)
-        val spinner = menu.findItem(R.id.action_menu_spinner).actionView as Spinner
-        val item1 =
-            menu.findItem(R.id.action_menu_notification).actionView.findViewById(R.id.layoutNotification) as RelativeLayout
-        item1.setOnClickListener {
-            startActivity(Intent(this, NotificationsActivity::class.java))
-        }
-        val newList = ArrayList<String>()
-        newList.apply {
-            loginResponse.userDetail?.batchList?.forEach {
-                this.add(it.batchName.toString())
-            }
-            Log.e("popData", newList.toString())
-            val adapter = ArrayAdapter(applicationContext, R.layout.spinner_item, newList)
-            spinner.adapter = adapter
-
-            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    adapterView: AdapterView<*>,
-                    view: View,
-                    i: Int,
-                    l: Long
-                ) {
-                    Log.e("popThread", "1234")
-
-                    EventBus.getDefault().post(OnEventData(i))
-                }
-
-                override fun onNothingSelected(adapterView: AdapterView<*>?) {}
-            }
-        }
-        return true
-    }
-*/
-
-/*
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        super.onOptionsItemSelected(item)
-        return when (item.itemId) {
-            R.id.action_menu_notification -> {
-                return true
-            }
-            R.id.action_qr_code -> {
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                    == PackageManager.PERMISSION_GRANTED
-                ) {
-                    openQRCodeScreen()
-                } else {
-                    ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(Manifest.permission.CAMERA),
-                        100
-                    )
-                }
-                return true
-            }
-            android.R.id.home -> {
-                drawer.openDrawer(GravityCompat.START)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-*/
 
     override fun onRequestPermissionsResult(
         requestCode: Int,

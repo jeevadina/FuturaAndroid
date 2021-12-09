@@ -177,9 +177,9 @@ class CompletedLiveFragment : Fragment(), CompletedListener, CompletedLiveAdapte
     }
 
     override fun onClicked(completedSession: CompletedSession) {
-        val intent = Intent(requireContext(), CompletedLiveActivity::class.java)
+       /* val intent = Intent(requireContext(), CompletedLiveActivity::class.java)
         intent.putExtra("completedLive", Gson().toJson(completedSession))
-        requireContext().startActivity(intent)
+        requireContext().startActivity(intent)*/
     }
 }
 

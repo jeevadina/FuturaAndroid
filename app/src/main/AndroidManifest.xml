@@ -96,7 +96,8 @@
             android:name="com.futuraeducation.MainActivity" />
         <activity
             android:name="com.futuraeducation.activity.CompletedLiveActivity" />
-
+        <activity
+            android:name="com.futuraeducation.activity.AttachmentActivity" />
 
         <service android:name="com.futuraeducation.helper.exoplayer.DemoDownloadService"
             android:exported="false">

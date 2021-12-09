@@ -63,12 +63,12 @@ class LoginFragment : Fragment(), OnNetworkResponse {
         mRemoteConfig = Firebase.remoteConfig
         networkHelper = NetworkHelper(requireContext())
         // Configure Google Sign In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+   /*     val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
-            .build()
+            .build()*/
 
-        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+       // googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
         // Initialize Firebase Auth
         auth = Firebase.auth
     }
