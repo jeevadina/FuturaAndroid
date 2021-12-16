@@ -67,4 +67,44 @@ data class Topic(
 )
 
 @Serializable
+data class Material (
+
+    @SerializedName("id")
+    @Expose
+    var id: String? = null,
+
+    @SerializedName("description")
+    @Expose
+    var description: String? = null,
+
+    @SerializedName("courseName")
+    @Expose
+    var courseName: String? = null,
+
+    @SerializedName("status")
+    @Expose
+    var status: String? = null,
+
+    @SerializedName("filePath")
+    @Expose
+    var filePath: String? = null,
+
+    @SerializedName("materialType")
+    @Expose
+    var materialType: String? = null,
+
+    @SerializedName("orderSequence")
+    @Expose
+    var orderSequence: String? = null,
+
+    @SerializedName("title")
+    @Expose
+    var title: String? = null,
+
+    @SerializedName("videoId")
+    @Expose
+    var videoId: String? = null
+)
+
+@Serializable
 data class MaterialVideoList( val materialList: List<VideoMaterial>)

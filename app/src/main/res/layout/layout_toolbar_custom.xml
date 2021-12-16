@@ -43,14 +43,14 @@
         android:textColor="@color/text_color" />
 
     <Spinner
+        android:id="@+id/batchSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/userNameTool"
-        android:layout_toEndOf="@id/logoTool"
-        android:layout_toStartOf="@id/qrScannerTool"
         android:layout_centerHorizontal="true"
-        android:fontFamily="@font/roboto_bold"
-        android:id="@+id/batchSpinner"/>
+        android:layout_toStartOf="@id/qrScannerTool"
+        android:layout_toEndOf="@id/logoTool"
+        android:fontFamily="@font/roboto_bold" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="@dimen/_30sdp"

@@ -26,14 +26,18 @@ class HomeTabViewAdapter(fm: FragmentActivity, val loginResponse: LoginData) : F
         if (loginResponse.role.equals("COACH")) {
             return when (position) {
                 0 -> {
-                    DashBoardFragment.newInstance("", "")
+                    PublishedMaterialsFragment.newInstance("", "")
                 }
+/*
                 1 -> {
-             /*       PublishedMaterialsFragment.newInstance("", "")
+             */
+/*       PublishedMaterialsFragment.newInstance("", "")
                 }
-                2 -> {*/
+                2 -> {*//*
+
                     TestFragment.newInstance("", "")
                 }
+*/
                 else -> {
                     AssignmentFragment.newInstance("", "")
                 }

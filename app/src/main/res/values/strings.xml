@@ -184,4 +184,16 @@
     <string name="termsandCondtions"><![CDATA[Terms & Conditions]]></string>
     <string name="practice_by">Practice By Subjects</string>
     <string name="see_all">See All</string>
+
+
+    <string name="dd_institute">Institute Name*</string>
+    <string name="dd_course">Select Course*</string>
+    <string name="dd_branch">Select Branch*</string>
+    <string name="dd_batch">Select Batch*</string>
+    <string name="dd_subject">Select Subject</string>
+    <string name="dd_chapter">Select Chapter</string>
+    <string name="dd_topic">Select Topic</string>
+    <string name="dd_material">Select Material</string>
+    <string name="dd_publish_date">Publish Date</string>
+    <string name="dd_publish_time">Publish Time</string>
 </resources>
