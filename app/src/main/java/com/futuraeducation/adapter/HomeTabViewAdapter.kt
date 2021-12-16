@@ -28,12 +28,16 @@ class HomeTabViewAdapter(fm: FragmentActivity, val loginResponse: LoginData) : F
                 0 -> {
                     PublishedMaterialsFragment.newInstance("", "")
                 }
+/*
                 1 -> {
-             /*       PublishedMaterialsFragment.newInstance("", "")
+             */
+/*       PublishedMaterialsFragment.newInstance("", "")
                 }
-                2 -> {*/
+                2 -> {*//*
+
                     TestFragment.newInstance("", "")
                 }
+*/
                 else -> {
                     AssignmentFragment.newInstance("", "")
                 }

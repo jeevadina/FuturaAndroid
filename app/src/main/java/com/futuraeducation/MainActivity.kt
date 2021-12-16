@@ -244,6 +244,7 @@ class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdated
         if (loginResponse.role?.equals("COACH")!!){
             navigationView.menu.removeItem(R.id.navigation_learn)
             navigationView.menu.removeItem(R.id.navigation_live)
+            navigationView.menu.removeItem(R.id.navigation_test)
         }else{
    /*         navigationView.menu.removeItem(R.id.navigation_publish)
             navigationView.menu.removeItem(R.id.navigation_dash)*/
@@ -264,12 +265,12 @@ class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdated
                             viewPager.currentItem = 1
                             return@OnNavigationItemSelectedListener true
                         }*/
-                        R.id.navigation_test -> {
+                     /*   R.id.navigation_test -> {
                             viewPager.currentItem = 1
                             return@OnNavigationItemSelectedListener true
-                        }
+                        }*/
                         R.id.navigation_assignment -> {
-                            viewPager.currentItem = 2
+                            viewPager.currentItem = 1
                             return@OnNavigationItemSelectedListener true
                         }
 
