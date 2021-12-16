@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:expandableTextView="http://schemas.android.com/tools"
     android:layout_marginLeft="@dimen/_10sdp"
     android:layout_marginRight="@dimen/_10sdp"
     android:layout_marginTop="@dimen/_5sdp"
@@ -37,19 +38,46 @@
                 android:text="@string/app_name"
                 android:id="@+id/assign_name"/>
 
+            <com.ms.square.android.expandabletextview.ExpandableTextView
+                android:id="@+id/expand_text_view"
+                android:layout_width="match_parent"
+                android:layout_below="@id/assign_name"
+                android:layout_toLeftOf="@id/ply_adapter_img"
+                android:layout_height="wrap_content"
+                expandableTextView:animDuration="100"
+                expandableTextView:maxCollapsedLines="1">
+
+                <!-- simple text view  -->
+                <TextView
+                    android:id="@id/expandable_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/length_text"
+                    android:textColor="#666666" />
+
+                <!-- expandable ImageButton -->
+                <ImageButton
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:background="@android:color/transparent" />
+
+            </com.ms.square.android.expandabletextview.ExpandableTextView>
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:textColor="@color/greytext"
-                android:layout_below="@+id/assign_name"
+                android:layout_below="@+id/expand_text_view"
                 android:layout_toLeftOf="@id/ply_adapter_img"
                 android:drawableLeft="@drawable/ic_time_v1"
                 android:drawablePadding="@dimen/_5sdp"
                 android:gravity="center_vertical"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/app_name"
-                android:id="@+id/assign_start_date"/>
+                android:id="@+id/assign_date"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ply_adapter_img"
@@ -61,8 +89,6 @@
 
         </RelativeLayout>
 
-
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 </com.google.android.material.card.MaterialCardView>

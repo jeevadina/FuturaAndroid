@@ -15,4 +15,12 @@ object RetroFitCall {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+    fun retroFitCallPostAssign() {
+
+        retrofit = Retrofit.Builder()
+            .baseUrl(URLHelper.assignment)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 }

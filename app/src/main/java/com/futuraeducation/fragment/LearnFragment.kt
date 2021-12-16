@@ -49,6 +49,7 @@ import vimeoextractor.OnVimeoExtractionListener
 import vimeoextractor.VimeoExtractor
 import vimeoextractor.VimeoVideo
 import java.util.*
+import kotlin.properties.Delegates
 
 class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallback,
     OnNetworkResponse, SubjectClickListener {
@@ -60,6 +61,7 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
     var batchIds: String? = null
     var courseId: String? = null
     lateinit var db: AppDatabase
+    var position by Delegates.notNull<Int>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,6 +95,7 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
             loginData.userDetail?.batchList!![0].additionalCourseId
         }
 
+        position = 0
         if (!courseId.isNullOrEmpty()){
             requestSessions(courseId!!)
         } else if (loginData.userDetail?.batchList?.get(0)?.additionalCourseId.isNullOrEmpty()) {
@@ -270,7 +273,7 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
     override fun onSubjectClicked(Id: String, batchId: String, title: String) {
         val intent = Intent(requireContext(), ChapterActivity::class.java)
         intent.putExtra("id", Id)
-        intent.putExtra("batchId", batchIds)
+        intent.putExtra("batchId", loginData.userDetail?.batchList?.get(position)?.id)
         intent.putExtra("title", title)
         startActivity(intent)
     }
@@ -296,6 +299,7 @@ class LearnFragment : Fragment(), CourseListener, VideoPlayedAdapter.ActionCallb
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: OnEventData?) {
         Log.e("popThread","123")
+        position = event?.batchPosition!!
         val data = loginData.userDetail?.batchList?.get(event?.batchPosition!!)
         requestSessions(loginData.userDetail?.batchList?.get(event?.batchPosition!!)?.courseId!!)
         //selectedCourseTxt.text = "Course Name: ${loginData.userDetail?.batchList?.get(event?.batchPosition!!)?.course?.courseName!!}"
