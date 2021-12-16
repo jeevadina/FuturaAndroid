@@ -9,9 +9,9 @@
 
     <include
         android:id="@+id/header"
+        layout="@layout/layout_toolbar_custom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/layout_toolbar_custom" />
+        android:layout_height="wrap_content" />
 
 
     <androidx.appcompat.widget.AppCompatImageView

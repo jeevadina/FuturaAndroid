@@ -7,6 +7,11 @@ data class CourseResponse(
     var data: ArrayList<Datum>? = null
 )
 
+data class CourseSubjectResponse(
+    @SerializedName("data")
+    var data: ArrayList<Subject>? = null
+)
+
 data class Datum (
     @SerializedName("id")
     var id: String? = null,

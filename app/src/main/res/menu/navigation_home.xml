@@ -5,9 +5,9 @@
 
     <item
         android:id="@+id/navigation_dash"
-        android:icon="@drawable/ic_dashboard"
+        android:icon="@drawable/ic_publish"
         android:iconTint="@color/greytext"
-        android:title="DashBoard"
+        android:title="Publish"
         app:showAsAction="always|withText"/>
 
     <item

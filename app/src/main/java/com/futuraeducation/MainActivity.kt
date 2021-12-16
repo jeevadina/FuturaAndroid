@@ -217,9 +217,9 @@ class MainActivity : AppCompatActivity(), OnNetworkResponse, InstallStateUpdated
                     }*/ else if (position == 1) {
                        /*     navigationView.selectedItemId = R.id.navigation_publish
                         } else if (position == 2) {*/
-                            navigationView.selectedItemId = R.id.navigation_test
+                       /*     navigationView.selectedItemId = R.id.navigation_test
                         }
-                        else if (position == 2) {
+                        else if (position == 2) {*/
                             navigationView.selectedItemId = R.id.navigation_assignment
                         }
                     }else{
