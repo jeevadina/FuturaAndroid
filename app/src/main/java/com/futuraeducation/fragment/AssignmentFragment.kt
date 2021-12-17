@@ -85,7 +85,7 @@ class AssignmentFragment : Fragment(), AssignmentListener {
     private fun getAssignments(batchId: String) {
 
         CoroutineScope(Dispatchers.IO).launch {
-            RetroFitCall.retroFitCall()
+            RetroFitCall.retroFitCall(requireContext())
             val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
             val response = service.getAssignments(
                 batchId,

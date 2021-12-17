@@ -4,6 +4,8 @@ import com.futuraeducation.model.*
 import com.futuraeducation.model.assignment.AssignmentModel
 import com.futuraeducation.model.live.Batch
 import com.futuraeducation.model.onBoarding.CompletedSession
+import com.futuraeducation.model.publish.PublishMaterialResponse
+import com.google.gson.JsonObject
 import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.*
@@ -37,5 +39,9 @@ interface ApiInterface {
 
     @GET("material/unPublishedMaterials")
     suspend fun getMaterial(@QueryMap options: Map<String, String>, @HeaderMap hashMap: HashMap<String, String>): Response<List<Material>>
+
+
+    @POST("materialAccess/save")
+    suspend fun publishMaterials(@Body jsonObject: JsonObject , @HeaderMap hashMap: HashMap<String, String>): Response<PublishMaterialResponse>
 
 }

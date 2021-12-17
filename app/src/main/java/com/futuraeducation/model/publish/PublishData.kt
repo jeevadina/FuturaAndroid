@@ -5,16 +5,18 @@ import com.google.gson.annotations.SerializedName
 class PublishData {
     @SerializedName("coachingCentreId")
     var coachingCentreId: String? = null
-    @SerializedName("branchIds")
-    var branchIds: ArrayList<PublishDataValue>? = null
+    @SerializedName("branchId")
+    var branchId: ArrayList<PublishDataValue>? = null
     @SerializedName("courseId")
     var courseId: String? = null
     @SerializedName("batchId")
     var batchId: ArrayList<PublishDataValue>? = null
+    @SerializedName("batchIds")
+    var batchIds: ArrayList<String>? = null
     @SerializedName("subjectId")
     var subjectId: String? = null
     @SerializedName("chapterId")
-    var chapterId: String? = null
+    var chapterId: ArrayList<String>? = null
     @SerializedName("topicId")
     var topicId: String? = null
     @SerializedName("materialId")
@@ -30,4 +32,9 @@ class PublishDataValue {
     var value: String? = null
     @SerializedName("label")
     var label: String? = null
+}
+
+class PublishMaterialResponse{
+    @SerializedName("data")
+    var data: String? = null
 }

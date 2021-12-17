@@ -9,8 +9,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/_10sdp">
+        android:orientation="vertical">
 
         <include
             android:id="@+id/header"
@@ -19,185 +18,187 @@
             android:layout_height="wrap_content" />
 
         <com.futuraeducation.helper.SimpleStatefulLayout
+            android:id="@+id/statefulLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/statefulLayout">
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldInstitute"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/dd_institute">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textFieldInstitute"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/dd_institute">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldCourse"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/dd_course">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textFieldCourse"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/dd_course">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldBranch"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/dd_branch">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textFieldBranch"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/dd_branch">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldBatch"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/dd_batch">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textFieldBatch"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/dd_batch">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldSubject"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/dd_subject">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textFieldSubject"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/dd_subject">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldChapter"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/dd_chapter">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textFieldChapter"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/dd_chapter">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldTopic"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/dd_topic">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textFieldTopic"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/dd_topic">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldMaterial"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/dd_material">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textFieldMaterial"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/dd_material">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldPublishDate"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/dd_publish_date">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textFieldPublishDate"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="@dimen/_40sdp"
-                    android:padding="@dimen/_10sdp"
-                    android:focusable="false"
-                    android:drawableEnd="@drawable/baseline_today_24"
-                    android:inputType="none" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/dd_publish_date">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/baseline_today_24"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:minHeight="@dimen/_40sdp"
+                        android:padding="@dimen/_10sdp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldPublishTime"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/dd_publish_time">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textFieldPublishTime"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="@dimen/_40sdp"
-                    android:padding="@dimen/_10sdp"
-                    android:focusable="false"
-                    android:drawableEnd="@drawable/baseline_access_time_24"
-                    android:inputType="none" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/dd_publish_time">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/baseline_access_time_24"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:minHeight="@dimen/_40sdp"
+                        android:padding="@dimen/_10sdp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPublish"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_48sdp"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:paddingStart="@dimen/_16sdp"
-                android:paddingEnd="@dimen/_16sdp"
-                android:text="Publish"
-                android:textAllCaps="false"
-                app:cornerRadius="@dimen/_3sdp" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPublish"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_48sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:text="Publish"
+                    android:textAllCaps="false"
+                    app:cornerRadius="@dimen/_3sdp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </com.futuraeducation.helper.SimpleStatefulLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>

@@ -46,6 +46,7 @@ import com.futuraeducation.model.publish.PublishDataValue
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import com.google.gson.JsonObject
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.LocalDateTime
@@ -73,6 +74,7 @@ class PublishedMaterialsFragment : Fragment() {
     lateinit var branchList: ArrayList<Branch>
     lateinit var batchList: ArrayList<Batch>
     var publishData: PublishData? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,7 +116,7 @@ class PublishedMaterialsFragment : Fragment() {
                 lifecycleScope.launch {
                     publishData!!.coachingCentreId = loginData.userDetail!!.coachingCentre!!.id!!
                     statefulLayout.showProgress()
-                    getCourseList(loginData.userDetail!!.coachingCentre!!.id!!)
+                    getCourseList()
                 }
             }
         }
@@ -144,6 +146,10 @@ class PublishedMaterialsFragment : Fragment() {
 
 
         }
+
+        btnPublish.setOnClickListener {
+            validatePublishData()
+        }
     }
 
     private fun onDateSelected(dateTimeStampInMillis: Long) {
@@ -156,7 +162,7 @@ class PublishedMaterialsFragment : Fragment() {
     private fun onTimeSelected(picker: MaterialTimePicker) {
         val newHour: Int = picker.hour
         val newMinute: Int = picker.minute
-        val time = "$newHour : $newMinute"
+        val time = "$newHour:$newMinute"
         (textFieldPublishTime.editText as? AutoCompleteTextView)?.setText(time)
         publishData!!.publishTime = time
     }
@@ -216,13 +222,11 @@ class PublishedMaterialsFragment : Fragment() {
         startActivity(intent)
     }
 
-    suspend fun getCourseList(coachingCentreId: String) : Boolean{
-        val jsonObject = JSONObject()
-        jsonObject.put("coachingCentreId", coachingCentreId)
+    private suspend fun getCourseList() : Boolean{
 
-        RetroFitCall.retroFitCall()
+        RetroFitCall.retroFitCall(requireContext())
         val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
-        val response = service.getCoursesByCoachingCenter(coachingCentreId, ApiUtils.getHeader(context))
+        val response = service.getCoursesByCoachingCenter(publishData!!.coachingCentreId!!, ApiUtils.getHeader(context))
         return if (response.isSuccessful) {
             if (response.code() == 200) {
                 this.lifecycleScope.launch {
@@ -232,21 +236,29 @@ class PublishedMaterialsFragment : Fragment() {
                 }
                 true
             } else {
-                this.lifecycleScope.launch {
-                    statefulLayout.showOffline()
-//                    if (myProgressBar.isShowing()) {
-//                        myProgressBar.dismiss()
-//                    }
-              //     showErrorMsg("You have no Completed Live Sessions right now")
-
-                }
+                retryGetCourseList()
                 false
             }
         } else {
-            this.lifecycleScope.launch {
-                statefulLayout.showOffline()
-            }
+            retryGetCourseList()
             false
+        }
+    }
+
+    private fun retryGetCourseList(){
+        try {
+            lifecycleScope.launch {
+                statefulLayout.showOffline()
+                statefulLayout.setOfflineText("Failed to getting Course List, Try Again.")
+                statefulLayout.setOfflineRetryOnClickListener {
+                    statefulLayout.showProgress()
+                    lifecycleScope.launch {
+                        getCourseList()
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -262,15 +274,15 @@ class PublishedMaterialsFragment : Fragment() {
             lifecycleScope.launch {
                 publishData!!.courseId = courseList[i].id!!
                 statefulLayout.showProgress()
-                getBranchList(courseList[i].id!!)
+                getBranchList()
             }
         }
     }
-    private suspend fun getBranchList(courseid: String) : Boolean{
+    private suspend fun getBranchList() : Boolean{
 
-        RetroFitCall.retroFitCall()
+        RetroFitCall.retroFitCall(requireContext())
         val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
-        val response = service.getBranchesForCourse(loginData.userDetail!!.coachingCentre!!.id!!,courseid, ApiUtils.getHeader(context))
+        val response = service.getBranchesForCourse(loginData.userDetail!!.coachingCentre!!.id!!,publishData!!.courseId!!, ApiUtils.getHeader(context))
         return if (response.isSuccessful) {
             if (response.code() == 200) {
                 this.lifecycleScope.launch {
@@ -280,21 +292,28 @@ class PublishedMaterialsFragment : Fragment() {
                 }
                 true
             } else {
-                this.lifecycleScope.launch {
-                    statefulLayout.showOffline()
-//                    if (myProgressBar.isShowing()) {
-//                        myProgressBar.dismiss()
-//                    }
-                    //     showErrorMsg("You have no Completed Live Sessions right now")
-
-                }
+                retryGetBranchList()
                 false
             }
         } else {
-            this.lifecycleScope.launch {
-                statefulLayout.showOffline()
-            }
+            retryGetBranchList()
             false
+        }
+    }
+    private fun retryGetBranchList(){
+        try {
+            lifecycleScope.launch {
+                statefulLayout.showOffline()
+                statefulLayout.setOfflineText("Failed to getting Branch List, Try Again.")
+                statefulLayout.setOfflineRetryOnClickListener {
+                    statefulLayout.showProgress()
+                    lifecycleScope.launch {
+                        getBranchList()
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
     private fun displayBranchDropDown(){
@@ -310,10 +329,10 @@ class PublishedMaterialsFragment : Fragment() {
                 val publishDataValue = PublishDataValue()
                 publishDataValue.value = branchList[i].id
                 publishDataValue.label = branchList[i].branchName
-                if(publishData!!.branchIds == null){
-                    publishData!!.branchIds = ArrayList()
+                if(publishData!!.branchId == null){
+                    publishData!!.branchId = ArrayList()
                 }
-                publishData!!.branchIds!!.add(publishDataValue)
+                publishData!!.branchId!!.add(publishDataValue)
                 statefulLayout.showProgress()
                 getBatchList()
             }
@@ -324,13 +343,13 @@ class PublishedMaterialsFragment : Fragment() {
         val data: MutableMap<String, String> = HashMap()
         try {
             data["coachingCentreId"] = publishData!!.coachingCentreId!!
-            data["branchIds"] = publishData!!.branchIds!![0].value!!
+            data["branchIds"] = publishData!!.branchId!![0].value!!
             data["courseId"] = publishData!!.courseId!!
         } catch (e: Exception) {
             e.printStackTrace()
         }
 
-        RetroFitCall.retroFitCall()
+        RetroFitCall.retroFitCall(requireContext())
         val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
         val response = service.getBatchesByCourse(data, ApiUtils.getHeader(context))
         return if (response.isSuccessful) {
@@ -342,20 +361,28 @@ class PublishedMaterialsFragment : Fragment() {
                 }
                 true
             } else {
-                this.lifecycleScope.launch {
-//                    if (myProgressBar.isShowing()) {
-//                        myProgressBar.dismiss()
-//                    }
-                    //     showErrorMsg("You have no Completed Live Sessions right now")
-                    statefulLayout.showOffline()
-                }
+                retryGetBatchList()
                 false
             }
         } else {
-            this.lifecycleScope.launch {
-                statefulLayout.showOffline()
-            }
+            retryGetBatchList()
             false
+        }
+    }
+    private fun retryGetBatchList(){
+        try {
+            lifecycleScope.launch {
+                statefulLayout.showOffline()
+                statefulLayout.setOfflineText("Failed to getting Batch List, Try Again.")
+                statefulLayout.setOfflineRetryOnClickListener {
+                    statefulLayout.showProgress()
+                    lifecycleScope.launch {
+                        getBatchList()
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
     private fun displayBatchDropDown(){
@@ -375,6 +402,10 @@ class PublishedMaterialsFragment : Fragment() {
                     publishData!!.batchId = ArrayList()
                 }
                 publishData!!.batchId!!.add(publishDataValue)
+                if(publishData!!.batchIds == null){
+                    publishData!!.batchIds = ArrayList()
+                }
+                publishData!!.batchIds!!.add(batchList[i].id!!)
 
                 statefulLayout.showProgress()
                 getSubjectList()
@@ -383,7 +414,7 @@ class PublishedMaterialsFragment : Fragment() {
     }
     private suspend fun getSubjectList() : Boolean{
 
-        RetroFitCall.retroFitCall()
+        RetroFitCall.retroFitCall(requireContext())
         val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
         val response = service.getCourseSubject(publishData!!.courseId!!, ApiUtils.getHeader(context))
         return if (response.isSuccessful) {
@@ -396,20 +427,28 @@ class PublishedMaterialsFragment : Fragment() {
                 }
                 true
             } else {
-                this.lifecycleScope.launch {
-//                    if (myProgressBar.isShowing()) {
-//                        myProgressBar.dismiss()
-//                    }
-                    //     showErrorMsg("You have no Completed Live Sessions right now")
-                    statefulLayout.showOffline()
-                }
+                retrySubjectList()
                 false
             }
         } else {
-            this.lifecycleScope.launch {
-                statefulLayout.showOffline()
-            }
+            retrySubjectList()
             false
+        }
+    }
+    private fun retrySubjectList(){
+        try {
+            lifecycleScope.launch {
+                statefulLayout.showOffline()
+                statefulLayout.setOfflineText("Failed to getting Subject List, Try Again.")
+                statefulLayout.setOfflineRetryOnClickListener {
+                    statefulLayout.showProgress()
+                    lifecycleScope.launch {
+                        getSubjectList()
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
     private fun displaySubjectDropDown(){
@@ -430,7 +469,7 @@ class PublishedMaterialsFragment : Fragment() {
     }
     private suspend fun getChapterList() : Boolean{
 
-        RetroFitCall.retroFitCall()
+        RetroFitCall.retroFitCall(requireContext())
         val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
         val response = service.getSubjectChapter(publishData!!.subjectId!!, ApiUtils.getHeader(context))
         return if (response.isSuccessful) {
@@ -443,20 +482,28 @@ class PublishedMaterialsFragment : Fragment() {
                 }
                 true
             } else {
-                this.lifecycleScope.launch {
-//                    if (myProgressBar.isShowing()) {
-//                        myProgressBar.dismiss()
-//                    }
-                    //     showErrorMsg("You have no Completed Live Sessions right now")
-                    statefulLayout.showOffline()
-                }
+                retryChapterList()
                 false
             }
         } else {
-            this.lifecycleScope.launch {
-                statefulLayout.showOffline()
-            }
+            retryChapterList()
             false
+        }
+    }
+    private fun retryChapterList(){
+        try {
+            lifecycleScope.launch {
+                statefulLayout.showOffline()
+                statefulLayout.setOfflineText("Failed to getting Chapter List, Try Again.")
+                statefulLayout.setOfflineRetryOnClickListener {
+                    statefulLayout.showProgress()
+                    lifecycleScope.launch {
+                        getChapterList()
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
     private fun displayChapterDropDown(){
@@ -469,7 +516,10 @@ class PublishedMaterialsFragment : Fragment() {
 
         (textFieldChapter.editText as? AutoCompleteTextView)?.setOnItemClickListener { adapterView, view, i, l ->
             lifecycleScope.launch {
-                publishData!!.chapterId = subjectChapterList[i].id
+                if(publishData!!.chapterId == null){
+                    publishData!!.chapterId = ArrayList()
+                }
+                publishData!!.chapterId!!.add(subjectChapterList[i].id)
                 statefulLayout.showProgress()
                 getTopicsList()
             }
@@ -477,9 +527,9 @@ class PublishedMaterialsFragment : Fragment() {
     }
     private suspend fun getTopicsList() : Boolean{
 
-        RetroFitCall.retroFitCall()
+        RetroFitCall.retroFitCall(requireContext())
         val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
-        val response = service.getChapterTopics(publishData!!.chapterId!!, ApiUtils.getHeader(context))
+        val response = service.getChapterTopics(publishData!!.chapterId!![0], ApiUtils.getHeader(context))
         return if (response.isSuccessful) {
             if (response.code() == 200) {
                 this.lifecycleScope.launch {
@@ -490,20 +540,28 @@ class PublishedMaterialsFragment : Fragment() {
                 }
                 true
             } else {
-                this.lifecycleScope.launch {
-//                    if (myProgressBar.isShowing()) {
-//                        myProgressBar.dismiss()
-//                    }
-                    //     showErrorMsg("You have no Completed Live Sessions right now")
-                    statefulLayout.showOffline()
-                }
+                retryTopicsList()
                 false
             }
         } else {
-            this.lifecycleScope.launch {
-                statefulLayout.showOffline()
-            }
+            retryTopicsList()
             false
+        }
+    }
+    private fun retryTopicsList(){
+        try {
+            lifecycleScope.launch {
+                statefulLayout.showOffline()
+                statefulLayout.setOfflineText("Failed to getting Topics List, Try Again.")
+                statefulLayout.setOfflineRetryOnClickListener {
+                    statefulLayout.showProgress()
+                    lifecycleScope.launch {
+                        getTopicsList()
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
     private fun displayTopicsDropDown(){
@@ -533,7 +591,7 @@ class PublishedMaterialsFragment : Fragment() {
         }
 
 
-        RetroFitCall.retroFitCall()
+        RetroFitCall.retroFitCall(requireContext())
         val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
         val response = service.getMaterial(data, ApiUtils.getHeader(context))
         return if (response.isSuccessful) {
@@ -545,20 +603,28 @@ class PublishedMaterialsFragment : Fragment() {
                 }
                 true
             } else {
-                this.lifecycleScope.launch {
-//                    if (myProgressBar.isShowing()) {
-//                        myProgressBar.dismiss()
-//                    }
-                    //     showErrorMsg("You have no Completed Live Sessions right now")
-                    statefulLayout.showOffline()
-                }
+                retryMaterialList()
                 false
             }
         } else {
-            this.lifecycleScope.launch {
-                statefulLayout.showOffline()
-            }
+            retryMaterialList()
             false
+        }
+    }
+    private fun retryMaterialList(){
+        try {
+            lifecycleScope.launch {
+                statefulLayout.showOffline()
+                statefulLayout.setOfflineText("Failed to getting Material List, Try Again.")
+                statefulLayout.setOfflineRetryOnClickListener {
+                    statefulLayout.showProgress()
+                    lifecycleScope.launch {
+                        getMaterialList()
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
     private fun displayMaterialDropDown(){
@@ -576,5 +642,90 @@ class PublishedMaterialsFragment : Fragment() {
                 //getBranchList(batchList!![i].id!!)
             }
         }
+    }
+
+    private fun validatePublishData(){
+        if(publishData == null){
+            (textFieldInstitute.editText as? AutoCompleteTextView)?.error = "Please Select institute"
+        }else if(publishData!!.coachingCentreId == null){
+            (textFieldCourse.editText as? AutoCompleteTextView)?.error = "Please Select institute"
+        }else if(publishData!!.courseId == null){
+            (textFieldCourse.editText as? AutoCompleteTextView)?.error = "Please Select course"
+        }else if(publishData!!.branchId == null){
+            (textFieldBranch.editText as? AutoCompleteTextView)?.error = "Please Select branch"
+        }else if(publishData!!.batchId == null){
+            (textFieldBatch.editText as? AutoCompleteTextView)?.error = "Please Select batch"
+        }else if(publishData!!.publishDate == null){
+            (textFieldPublishDate.editText as? AutoCompleteTextView)?.error = "Please Select date"
+        }else if(publishData!!.publishTime == null){
+            (textFieldPublishTime.editText as? AutoCompleteTextView)?.error = "Please Select time"
+        }else {
+            lifecycleScope.launch {
+                publishMaterials()
+            }
+        }
+    }
+
+    private suspend fun publishMaterials() : Boolean{
+
+        //val jsonObject = JSONObject()
+       val jsonObject = Gson().fromJson(Gson().toJson(publishData),JsonObject::class.java)
+
+        Log.d("jsonObject",Gson().toJson(publishData))
+
+        RetroFitCall.retroFitCall(requireContext())
+        val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
+        val response = service.publishMaterials(jsonObject, ApiUtils.getHeader(context))
+        return if (response.isSuccessful) {
+            if (response.code() == 200) {
+                this.lifecycleScope.launch {
+                    val responseData = response.body()!!
+
+                    Toast.makeText(requireContext(),responseData.data, Toast.LENGTH_LONG).show()
+                    clearDropDown()
+                }
+                true
+            } else {
+                this.lifecycleScope.launch {
+//                    if (myProgressBar.isShowing()) {
+//                        myProgressBar.dismiss()
+//                    }
+                    //     showErrorMsg("You have no Completed Live Sessions right now")
+//                    statefulLayout.showOffline()
+//                    statefulLayout.setOfflineRetryOnClickListener {
+//                        statefulLayout.showContent()
+//                       // clearDropDown()
+//                    }
+                    Toast.makeText(requireContext(),"Something went wrong", Toast.LENGTH_LONG).show()
+                }
+                false
+            }
+        } else {
+            this.lifecycleScope.launch {
+//                statefulLayout.showOffline()
+//                statefulLayout.setOfflineRetryOnClickListener {
+//                    statefulLayout.showContent()
+//                   // clearDropDown()
+//                }
+                Toast.makeText(requireContext(),"Something went wrong", Toast.LENGTH_LONG).show()
+            }
+            false
+        }
+    }
+
+
+    private fun clearDropDown()
+    {
+        publishData = PublishData()
+        (textFieldInstitute.editText as? AutoCompleteTextView)?.setText("")
+        (textFieldCourse.editText as? AutoCompleteTextView)?.setText("")
+        (textFieldBranch.editText as? AutoCompleteTextView)?.setText("")
+        (textFieldBatch.editText as? AutoCompleteTextView)?.setText("")
+        (textFieldSubject.editText as? AutoCompleteTextView)?.setText("")
+        (textFieldChapter.editText as? AutoCompleteTextView)?.setText("")
+        (textFieldTopic.editText as? AutoCompleteTextView)?.setText("")
+        (textFieldMaterial.editText as? AutoCompleteTextView)?.setText("")
+        (textFieldPublishDate.editText as? AutoCompleteTextView)?.setText("")
+        (textFieldPublishTime.editText as? AutoCompleteTextView)?.setText("")
     }
 }

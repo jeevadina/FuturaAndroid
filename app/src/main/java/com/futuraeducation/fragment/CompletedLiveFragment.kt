@@ -108,7 +108,7 @@ class CompletedLiveFragment : Fragment(), CompletedListener, CompletedLiveAdapte
         jsonObject.put("coachingCentreId", loginData.userDetail?.coachingCenterId.toString())
         jsonObject.put("batchIds", myBatchList)
 
-        RetroFitCall.retroFitCall()
+        RetroFitCall.retroFitCall(requireContext())
         val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
         val response = service.getData(jsonObject, ApiUtils.getHeader(context))
            return if (response.isSuccessful) {
