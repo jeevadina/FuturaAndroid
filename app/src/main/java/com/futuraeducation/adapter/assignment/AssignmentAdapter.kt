@@ -27,8 +27,9 @@ class AssignmentAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val studyItem = completedLive[position]
-        holder.itemView.assign_name.text = studyItem.subject
-        holder.itemView.assign_start_date.text = studyItem.date
+        holder.itemView.assign_name.text = studyItem.title
+        holder.itemView.expand_text_view.text = "Description : "+ context.getString(R.string.length_text)
+        holder.itemView.assign_date.text = studyItem.date
 
         holder.itemView.ply_adapter_img.setOnClickListener {
             studyItem.attachment?.let { it1 -> listener.onAssignmentClicked(it1) }

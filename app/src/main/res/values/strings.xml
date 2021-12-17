@@ -5,6 +5,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="restart_to_update">Restart to update app</string>
     <string name="action_restart">Restart</string>
+    <string name="length_text">2nd solution worked for me properly (using singleLine). Also I have tested in OS version: 4.1 and above (till 8.0), its working fine without any crashes</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="let_s_learn_anywhere_anytime">Let\'s Learn Anywhere, Anytime</string>

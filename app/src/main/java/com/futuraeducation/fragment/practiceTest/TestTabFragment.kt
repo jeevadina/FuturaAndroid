@@ -363,7 +363,6 @@ class TestTabFragment : Fragment(), TestClickListener, OnNetworkResponse {
                     val scheduledTestResponse =
                         Gson().fromJson(response, ScheduledClass::class.java)
 
-
                     if (scheduledTestResponse.MOCK_TEST.isNullOrEmpty()) {
                         expandableScheduleTest.secondLayout.recyclerViewChild.visibility = View.GONE
                         expandableScheduleTest.secondLayout.txtError.visibility = View.VISIBLE

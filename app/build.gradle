@@ -174,4 +174,6 @@ dependencies {
     //circle progress chart
     implementation("ir.mahozad.android:pie-chart:0.7.0")
 
+    //expandable textview
+    implementation("com.ms-square:expandableTextView:0.1.4")
 }

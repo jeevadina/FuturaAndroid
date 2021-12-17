@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -19,7 +20,6 @@ import com.futuraeducation.R
 import com.futuraeducation.activity.AttachmentActivity
 import com.futuraeducation.adapter.assignment.AssignmentAdapter
 import com.futuraeducation.helper.MyProgressBar
-import com.futuraeducation.model.OnEventData
 import com.futuraeducation.model.assignment.AssignmentModel
 import com.futuraeducation.model.onBoarding.LoginData
 import com.futuraeducation.network.ApiInterface
@@ -30,12 +30,13 @@ import com.futuraeducation.utils.Define
 import com.futuraeducation.utils.MyPreferences
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_assignment.*
+import kotlinx.android.synthetic.main.fragment_upcoming_live.*
 import kotlinx.android.synthetic.main.layout_toolbar_custom.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.greenrobot.eventbus.EventBus
-import java.util.ArrayList
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 private const val ARG_PARAM1 = "param1"
@@ -47,6 +48,7 @@ class AssignmentFragment : Fragment(), AssignmentListener {
     private var loginData = LoginData()
     lateinit var myProgressBar: MyProgressBar
     lateinit var auditList: List<AssignmentModel>
+    private var batchId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,9 +70,12 @@ class AssignmentFragment : Fragment(), AssignmentListener {
         loginData =
             Gson().fromJson(myPreferences.getString(Define.LOGIN_DATA), LoginData::class.java)
         //showErrorMsg("No Completed Live Sessions")
+        batchId = loginData.userDetail?.batchList?.get(0)?.id
 
         if (loginData.role?.equals("COACH")!!) {
             noAssignmentTxt.visibility = View.GONE
+            noDataImg.visibility = View.GONE
+            recyclerAssignment.visibility = View.GONE
             teacherAssign.visibility = View.VISIBLE
         } else {
             /* teacherAssign.visibility = View.GONE
@@ -80,6 +85,21 @@ class AssignmentFragment : Fragment(), AssignmentListener {
         }
 
         setMenuItems()
+
+        submitAssign.setOnClickListener {
+            Log.e("koppers", batchId.toString())
+            if (!titleTxt.text.isNullOrEmpty() && !descriptionTxt.text?.trim().isNullOrEmpty()){
+                myProgressBar.show()
+                sendAssignmentsToApi(titleTxt.text.toString(), descriptionTxt.text.toString(), "Physics",
+                    batchId!!, "05-12-2021","Manoj" )
+            }else if (!titleTxt.text.isNullOrEmpty() && descriptionTxt.text?.trim().isNullOrEmpty()){
+                Toast.makeText(requireContext(), "Please enter description",Toast.LENGTH_SHORT).show()
+            }else if (titleTxt.text.isNullOrEmpty() && !descriptionTxt.text?.trim().isNullOrEmpty()){
+                Toast.makeText(requireContext(), "Please enter title",Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(requireContext(), "Please enter required details",Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun getAssignments(batchId: String) {
@@ -102,7 +122,7 @@ class AssignmentFragment : Fragment(), AssignmentListener {
                         myProgressBar.dismiss()
                         if (!auditList.isNullOrEmpty()) {
                             setAdapter(auditList)
-                        }else{
+                        } else {
                             teacherAssign.visibility = View.GONE
                             recyclerAssignment.visibility = View.GONE
                             noAssignmentTxt.visibility = View.VISIBLE
@@ -120,7 +140,7 @@ class AssignmentFragment : Fragment(), AssignmentListener {
                 }
             } else {
                 viewLifecycleOwner.lifecycleScope.launch {
-                        myProgressBar.dismiss()
+                    myProgressBar.dismiss()
                     teacherAssign.visibility = View.GONE
                     recyclerAssignment.visibility = View.GONE
                     noAssignmentTxt.visibility = View.VISIBLE
@@ -161,7 +181,7 @@ class AssignmentFragment : Fragment(), AssignmentListener {
     }
 
     private fun setMenuItems() {
-        userNameTool.text = "Hi "+loginData.userDetail?.userName.toString()
+        userNameTool.text = "Hi " + loginData.userDetail?.userName.toString()
 
         val newList = ArrayList<String>()
         newList.apply {
@@ -179,14 +199,20 @@ class AssignmentFragment : Fragment(), AssignmentListener {
                     i: Int,
                     l: Long
                 ) {
-                    getAssignments(loginData.userDetail?.batchList?.get(i)?.id!!)
+                    batchId = loginData.userDetail?.batchList?.get(i)?.id
+
+                    if (!loginData.role.equals("COACH")) getAssignments(
+                        loginData.userDetail?.batchList?.get(
+                            i
+                        )?.id!!
+                    )
                 }
 
                 override fun onNothingSelected(adapterView: AdapterView<*>?) {}
             }
         }
 
-        qrScannerTool.setOnClickListener{
+        qrScannerTool.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED
             ) {
@@ -201,6 +227,53 @@ class AssignmentFragment : Fragment(), AssignmentListener {
         }
     }
 
+    private fun sendAssignmentsToApi(
+        title: String, desc: String, subject: String, batchId: String, date: String,
+        teacherName: String,
+    ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            RetroFitCall.retroFitCallPostAssign()
+            val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
+            val response = service.postAssignment(
+                title,
+                desc,
+                subject,
+                batchId,
+                date,
+                teacherName,
+                ApiUtils.getHeader(context)
+            )
+            Log.e("urlPop", response.toString())
+            if (response.isSuccessful) {
+                if (response.code() == 200) {
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        if (myProgressBar.isShowing()) {
+                            myProgressBar.dismiss()
+                        }
+                        titleTxt.text?.clear()
+                        descriptionTxt.text?.clear()
+                        Toast.makeText(requireContext(), "Assignment Submitted Successfully",Toast.LENGTH_SHORT).show()
+                        Log.e("postCall", response.body().toString())
+                    }
+
+                } else {
+                    Log.e("postCallFailed", response.body().toString())
+
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        if (myProgressBar.isShowing()) {
+                            myProgressBar.dismiss()
+                        }
+                        showErrorMsg("You have no Completed Live Sessions right now")
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showErrorMsg(s: String) {
+
+    }
+
     private fun openQRCodeScreen() {
         val intent = Intent(requireContext(), QRCodeActivity::class.java)
         startActivity(intent)
@@ -213,6 +286,6 @@ class AssignmentFragment : Fragment(), AssignmentListener {
     }
 }
 
-interface AssignmentListener{
+interface AssignmentListener {
     fun onAssignmentClicked(url: String)
 }

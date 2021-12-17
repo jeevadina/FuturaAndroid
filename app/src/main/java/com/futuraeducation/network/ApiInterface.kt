@@ -5,6 +5,7 @@ import com.futuraeducation.model.assignment.AssignmentModel
 import com.futuraeducation.model.live.Batch
 import com.futuraeducation.model.onBoarding.CompletedSession
 import com.futuraeducation.model.publish.PublishMaterialResponse
+import okhttp3.ResponseBody
 import com.google.gson.JsonObject
 import org.json.JSONObject
 import retrofit2.Response
@@ -17,6 +18,12 @@ interface ApiInterface {
 
     @GET("assignment/getAssignment/{batchId}")
     suspend fun getAssignments(@Path("batchId")  url: String, @HeaderMap hashMap: HashMap<String, String>): Response<List<AssignmentModel>>
+
+    @POST("addAssignment")
+    suspend fun postAssignment(@Query("title") title: String, @Query("description") description:String,
+                               @Query("subject") subject:String, @Query("batchId") batchId:String,
+                               @Query("date") date:String, @Query("teacherName") teacherName:String,
+                               @HeaderMap hashMap: HashMap<String, String>): Response<ResponseBody>
 
     @GET("course/child/{courseId}")
     suspend fun getCourseSubject(@Path("courseId")  url: String, @HeaderMap hashMap: HashMap<String, String>): Response<CourseSubjectResponse>

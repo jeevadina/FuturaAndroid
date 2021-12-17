@@ -19,6 +19,7 @@ object URLHelper {
     val baseURLAuth = productionUrl + "auth/"
     val courseURL = productionUrl + "course/child/"
     val courseURL1 = productionUrl + "course/child"
+    val assignment = productionUrl + "assignment/"
     private val testPaperAssign = productionUrl + "testPaperAssign/"
     private val testPaperVo = productionUrl + "testPaperVo/"
     private val studentAnswer = productionUrl + "studentAnswer/"
