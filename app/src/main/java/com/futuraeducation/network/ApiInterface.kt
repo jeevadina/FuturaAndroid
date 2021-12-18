@@ -2,6 +2,7 @@ package com.futuraeducation.network
 
 import com.futuraeducation.model.*
 import com.futuraeducation.model.assignment.AssignmentModel
+import com.futuraeducation.model.assignment.AssignmentResponse
 import com.futuraeducation.model.live.Batch
 import com.futuraeducation.model.onBoarding.CompletedSession
 import com.futuraeducation.model.publish.PublishMaterialResponse
@@ -11,6 +12,14 @@ import com.google.gson.JsonObject
 import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.*
+import okhttp3.MultipartBody
+import retrofit2.Call
+
+import retrofit2.http.POST
+
+import retrofit2.http.Multipart
+import retrofit2.http.PartMap
+
 
 interface ApiInterface {
 
@@ -21,12 +30,11 @@ interface ApiInterface {
     suspend fun getAssignments(@Path("batchId")  url: String, @HeaderMap hashMap: HashMap<String, String>): Response<List<AssignmentModel>>
 
     @Multipart
-    @POST("addAssignment")
-    suspend fun postAssignment(@Part("Files") attachment: String,
-                               @Query("title") title: String, @Query("description") description:String,
-                               @Query("subject") subject:String, @Query("batchId") batchId:String,
-                               @Query("date") date:String, @Query("teacherName") teacherName:String,
-                               @HeaderMap hashMap: HashMap<String, String>): Response<ResponseBody>
+    @POST("assignment/addAssignment")
+    fun postAssignment(
+        @PartMap partMap: java.util.HashMap<String, RequestBody>,
+        @Part file: MultipartBody.Part?
+    ): Call<AssignmentResponse>
 
     @GET("course/child/{courseId}")
     suspend fun getCourseSubject(@Path("courseId")  url: String, @HeaderMap hashMap: HashMap<String, String>): Response<CourseSubjectResponse>

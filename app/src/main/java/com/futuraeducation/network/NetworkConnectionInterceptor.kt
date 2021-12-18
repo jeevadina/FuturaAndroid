@@ -12,7 +12,7 @@ import java.io.IOException
 class NetworkConnectionInterceptor constructor(val context: Context?) : Interceptor{
 
     @Throws(IOException::class)
-    override fun intercept(chain: Interceptor.Chain): Response? {
+    override fun intercept(chain: Interceptor.Chain): Response {
         if (!isConnected()) {
             throw NoConnectivityException()
             // Throwing our custom exception 'NoConnectivityException'

@@ -53,3 +53,8 @@ data class AssignmentModel (
     @Expose
     var updatedBy: Any? = null
 )
+
+class AssignmentResponse{
+    @SerializedName("data")
+    var data: String? = null
+}

@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Base64
-import android.util.Base64OutputStream
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -25,12 +25,15 @@ import com.futuraeducation.activity.AttachmentActivity
 import com.futuraeducation.adapter.assignment.AssignmentAdapter
 import com.futuraeducation.helper.MyProgressBar
 import com.futuraeducation.model.assignment.AssignmentModel
+import com.futuraeducation.model.assignment.AssignmentResponse
 import com.futuraeducation.model.onBoarding.LoginData
+import com.futuraeducation.model.publish.PublishMaterialResponse
 import com.futuraeducation.network.ApiInterface
 import com.futuraeducation.network.ApiUtils
 import com.futuraeducation.network.RetroFitCall
 import com.futuraeducation.qrCode.QRCodeActivity
 import com.futuraeducation.utils.Define
+import com.futuraeducation.utils.FileUtils
 import com.futuraeducation.utils.MyPreferences
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_assignment.*
@@ -38,11 +41,16 @@ import kotlinx.android.synthetic.main.layout_toolbar_custom.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import java.io.ByteArrayOutputStream
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import java.io.File
 import java.util.*
+import okhttp3.ResponseBody
+import okhttp3.RequestBody
+
+
+
+
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -249,21 +257,37 @@ class AssignmentFragment : Fragment(), AssignmentListener {
         title: String, desc: String, subject: String, batchId: String, date: String,
         teacherName: String,
     ) {
-            RetroFitCall.retroFitCallPostAssign()
-            val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
-            val response = service.postAssignment(
-                basePdf,
-                title,
-                desc,
-                subject,
-                batchId,
-                date,
-                teacherName,
-                ApiUtils.getHeader(context)
-            )
-            Log.e("urlPop", response.toString())
-            if (response.isSuccessful) {
-                if (response.code() == 200) {
+
+        val file: File = FileUtils.getFile(requireContext(), filePath)
+
+
+        val description: RequestBody = createPartFromString(desc)!!
+        val title: RequestBody = createPartFromString(title)!!
+        val subject: RequestBody = createPartFromString(subject)!!
+        val batchId: RequestBody = createPartFromString(batchId)!!
+        val date: RequestBody = createPartFromString(date)!!
+        val teacherName: RequestBody = createPartFromString(teacherName)!!
+
+        val map: HashMap<String, RequestBody> = HashMap()
+        map["title"] = title
+        map["description"] = description
+        map["subject"] = subject
+        map["batchId"] = batchId
+        map["batchId"] = batchId
+        map["date"] = date
+        map["teacherName"] = teacherName
+        val body: MultipartBody.Part = prepareFilePart("Files", file)
+
+        RetroFitCall.retroFitCallPostAssign()
+        val service = RetroFitCall.retrofit.create(ApiInterface::class.java)
+        val response = service.postAssignment(
+            map,body
+        )
+
+        response.enqueue(object : retrofit2.Callback<AssignmentResponse> {
+            override fun onResponse(call: retrofit2.Call<AssignmentResponse>, response: retrofit2.Response<AssignmentResponse>) {
+                if (response.isSuccessful){
+                    if (response.code() == 200) {
                     viewLifecycleOwner.lifecycleScope.launch {
                         if (myProgressBar.isShowing()) {
                             myProgressBar.dismiss()
@@ -271,11 +295,9 @@ class AssignmentFragment : Fragment(), AssignmentListener {
                         titleTxt.text?.clear()
                         descriptionTxt.text?.clear()
                         Toast.makeText(requireContext(), "Assignment Submitted Successfully",Toast.LENGTH_SHORT).show()
-                        Log.e("postCall", response.body().toString())
                     }
 
                 } else {
-                    Log.e("postCallFailed", response.body().toString())
 
                     viewLifecycleOwner.lifecycleScope.launch {
                         if (myProgressBar.isShowing()) {
@@ -284,7 +306,20 @@ class AssignmentFragment : Fragment(), AssignmentListener {
                         showErrorMsg("You have no Completed Live Sessions right now")
                     }
                 }
+                }
             }
+            override fun onFailure(call: retrofit2.Call<AssignmentResponse>, t: Throwable) {
+                Toast.makeText(requireContext(), "${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+    }
+    private fun createPartFromString(string: String): RequestBody? {
+        return RequestBody.create(MultipartBody.FORM, string)
+    }
+    private fun prepareFilePart(partName: String, file: File): MultipartBody.Part {
+        val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+        return MultipartBody.Part.createFormData(partName, file.name, requestBody)
     }
 
     private fun showErrorMsg(s: String) {
@@ -322,6 +357,8 @@ class AssignmentFragment : Fragment(), AssignmentListener {
              val encodedPdf = Base64.encode(pdfInBytes, Base64.DEFAULT)
 
             Log.e("filPop", encodedPdf.toString())
+
+
 
         }
     }

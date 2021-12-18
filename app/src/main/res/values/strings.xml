@@ -196,4 +196,5 @@
     <string name="dd_material">Select Material</string>
     <string name="dd_publish_date">Publish Date</string>
     <string name="dd_publish_time">Publish Time</string>
+    <string name="internal_storage">Internal storage</string>
 </resources>
