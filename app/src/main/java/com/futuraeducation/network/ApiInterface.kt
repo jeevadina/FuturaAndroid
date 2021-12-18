@@ -4,6 +4,7 @@ import com.futuraeducation.model.*
 import com.futuraeducation.model.assignment.AssignmentModel
 import com.futuraeducation.model.live.Batch
 import com.futuraeducation.model.onBoarding.CompletedSession
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Response
@@ -17,8 +18,10 @@ interface ApiInterface {
     @GET("assignment/getAssignment/{batchId}")
     suspend fun getAssignments(@Path("batchId")  url: String, @HeaderMap hashMap: HashMap<String, String>): Response<List<AssignmentModel>>
 
+    @Multipart
     @POST("addAssignment")
-    suspend fun postAssignment(@Query("title") title: String, @Query("description") description:String,
+    suspend fun postAssignment(@Part("Files") attachment: String,
+                               @Query("title") title: String, @Query("description") description:String,
                                @Query("subject") subject:String, @Query("batchId") batchId:String,
                                @Query("date") date:String, @Query("teacherName") teacherName:String,
                                @HeaderMap hashMap: HashMap<String, String>): Response<ResponseBody>
@@ -31,7 +34,6 @@ interface ApiInterface {
 
     @GET("course/child/{chapterId}")
     suspend fun getChapterTopics(@Path("chapterId")  url: String, @HeaderMap hashMap: HashMap<String, String>): Response<CourseSubjectResponse>
-
 
     @GET("course/allCoursesByCoaching")
     suspend fun getCoursesByCoachingCenter(@Query("coachingCentreId") coachingCentreId: String, @HeaderMap hashMap: HashMap<String, String>): Response<List<Datum>>
