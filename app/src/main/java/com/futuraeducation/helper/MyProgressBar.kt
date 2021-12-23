@@ -31,7 +31,8 @@ class MyProgressBar(val activity: Activity) {
     }
 
     fun isShowing(): Boolean{
-        return alertDialog?.isShowing == true
+        return if (alertDialog!= null) alertDialog.let { it?.isShowing!! }
+        else false
     }
 
 }

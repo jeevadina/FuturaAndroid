@@ -48,10 +48,6 @@ import java.util.*
 import okhttp3.ResponseBody
 import okhttp3.RequestBody
 
-
-
-
-
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
