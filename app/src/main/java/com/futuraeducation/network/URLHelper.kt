@@ -9,8 +9,8 @@ object URLHelper {
     private var baseURL = mRemoteConfig.getString(Define.BASE_URL)
     private var baseBATH = mRemoteConfig.getString(Define.BASE_PATH)
 
-     var productionUrl = "http://adminconsole.upmyranks.com/app/api/v1/"
-    // var productionUrl = "https://api.upmyranks.com/app/api/v1/"
+//     var productionUrl = "http://adminconsole.upmyranks.com/app/api/v1/"
+    var productionUrl = "https://api.upmyranks.com/app/api/v1/"
 
 
     private val baseURLSession = productionUrl + "session/"
