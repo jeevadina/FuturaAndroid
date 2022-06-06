@@ -207,20 +207,24 @@ class LoginFragment : Fragment(), OnNetworkResponse {
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithCredential:success")
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    updateUI(null)
+        try {
+            val credential = GoogleAuthProvider.getCredential(idToken, null)
+            auth.signInWithCredential(credential)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success")
+                        val user = auth.currentUser
+                        updateUI(user)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithCredential:failure", task.exception)
+                        updateUI(null)
+                    }
                 }
-            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun signIn() {
@@ -229,12 +233,16 @@ class LoginFragment : Fragment(), OnNetworkResponse {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        if (user != null) {
-            Log.d("USERNAME", user!!.displayName!!)
-            Log.d("EMAIL", user!!.email!!)
-            Log.d("PHONE NUMBER", "" + user!!.phoneNumber)
-            Log.d("PHOTO URL", "" + user!!.photoUrl.toString())
-            Log.d("UID", "" + user!!.uid)
+        try {
+            if (user != null) {
+                Log.d("USERNAME", ""+user.displayName)
+                Log.d("EMAIL", ""+user.email)
+                Log.d("PHONE NUMBER", "" + user.phoneNumber)
+                Log.d("PHOTO URL", "" + user.photoUrl.toString())
+                Log.d("UID", "" + user.uid)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
