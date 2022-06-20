@@ -59,6 +59,7 @@ class NetworkHelper(context: Context) {
     ) {
         Utils.log(TAG, "url $url")
         Utils.log(TAG, "params $params")
+        Utils.log(TAG, "TAG $tag")
         if (cd.isConnectingToInternet()) {
 
             val header = HashMap<String, String>()
@@ -101,7 +102,7 @@ class NetworkHelper(context: Context) {
     ) {
 
         AndroidNetworking.get(url)
-            .addQueryParameter(params)
+            .addPathParameter(params)
             .addHeaders(header)
             .setTag(tag)
             .doNotCacheResponse()

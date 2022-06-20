@@ -41,6 +41,7 @@ import kotlinx.android.synthetic.main.layout_toolbar_custom.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import java.io.File
@@ -136,7 +137,9 @@ class AssignmentFragment : Fragment(), AssignmentListener {
 
             if (response.isSuccessful) {
                 if (response.code() == 200) {
-                    viewLifecycleOwner.lifecycleScope.launch {
+
+                    withContext(Dispatchers.Main) {
+                        //viewLifecycleOwner.lifecycleScope.launch {
                         auditList = response.body()!!
                         teacherAssign.visibility = View.GONE
                         noAssignmentTxt.visibility = View.GONE
@@ -150,23 +153,27 @@ class AssignmentFragment : Fragment(), AssignmentListener {
                             noAssignmentTxt.visibility = View.VISIBLE
                         }
                         Log.e("retoCall1", auditList.toString())
-
                     }
+                  //  }
                 } else {
-                    viewLifecycleOwner.lifecycleScope.launch {
+                  //  viewLifecycleOwner.lifecycleScope.launch {
+                    withContext(Dispatchers.Main) {
                         myProgressBar.dismiss()
                         teacherAssign.visibility = View.GONE
                         recyclerAssignment.visibility = View.GONE
                         noAssignmentTxt.visibility = View.VISIBLE
                     }
+                 //   }
                 }
             } else {
-                viewLifecycleOwner.lifecycleScope.launch {
+               // viewLifecycleOwner.lifecycleScope.launch {
+                withContext(Dispatchers.Main) {
                     myProgressBar.dismiss()
                     teacherAssign.visibility = View.GONE
                     recyclerAssignment.visibility = View.GONE
                     noAssignmentTxt.visibility = View.VISIBLE
                 }
+               // }
                 Log.e("retoCall1", response.isSuccessful.toString())
             }
         }
